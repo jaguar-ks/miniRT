@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.hpp                                         :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/17 16:18:19 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/18 09:11:27 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_HPP
-# define MINIRT_HPP
+#ifndef MINIRT_H
+# define MINIRT_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "../get_next_line/get_next_line.h"
-
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 typedef struct getc {
     char    buffer[BUFFER_SIZE + 1];
     char    *context;
@@ -34,4 +35,4 @@ void    ft_parce(char *input, int fd);
 #endif
 
 
-r << 16 | g << 8 | b
+// r << 16 | g << 8 | b

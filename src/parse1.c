@@ -6,11 +6,13 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:31:27 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/17 16:06:46 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/18 09:22:27 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.hpp"
+#include "../inc/minirt.h"
+#include "../inc/Prase.h"
+
 void    ft_error(int fd, char *context)
 {
     printf("Error: Problem during allocation\n");
@@ -61,7 +63,7 @@ char    *ft_getContext(char *input, int fd)
     free(new_context);
     return (cont.context);
 }
-
+void    ft_getInput();
 void    ft_parce(char *input, int fd)
 {
     char *Context;
@@ -69,7 +71,5 @@ void    ft_parce(char *input, int fd)
     Context = ft_getContext(input, fd);
     if (!Context)
         printf("Error: There was a problem during the reading of the file\n~>The error occured from the parce\n");
-    //ft_getInpt(Context);
-    printf("%s", Context);
-    pause();
+    ft_getInput(Context);
 }

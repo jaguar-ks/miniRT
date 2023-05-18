@@ -6,11 +6,11 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:29 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/17 11:59:04 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/18 09:05:10 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.hpp"
+#include "../inc/minirt.h"
 
 int main(int ac, char **av)
 {

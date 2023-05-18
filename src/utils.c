@@ -6,11 +6,11 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:07:25 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/17 11:53:40 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/18 09:05:16 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.hpp"
+#include "../inc/minirt.h"
 
 int ft_len(char *str)
 {

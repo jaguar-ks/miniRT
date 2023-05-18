@@ -6,11 +6,12 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:06:27 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/17 15:56:37 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/18 09:04:57 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.hpp"
+#include "../inc/minirt.h"
+
 int ft_extention(char *input)
 {
     int i;
