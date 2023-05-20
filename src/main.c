@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/20 17:56:21 by faksouss          #+#    #+#             */
+/*   Updated: 2023/05/20 17:56:23 by faksouss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"../inc/minirt.h"
 
 int	check_and_open_file(char *fl)
@@ -64,11 +76,10 @@ void    _miniRT(char *fl)
 		printf("-> %s\n", rt.fl[i]);
 }
 
-int main(int ac, char **av){
+int main(int ac, char **av)
+{
 	if (ac == 2)
-	{
 		_miniRT(av[1]);
-	}
 	else
 	{
 		ft_printf("Error : Bad number of args\n", 2);
