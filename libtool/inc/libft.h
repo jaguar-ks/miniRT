@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:51:45 by faksouss          #+#    #+#             */
-/*   Updated: 2023/04/04 03:37:24 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/18 09:10:26 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-typedef struct s_minishell
-{
-	int		*ext_st;
-	int		fd[2];
-	char	*line;
-	char	*prompt;
-	t_list	*cmd;
-	t_list	*env;
-}	t_minishell;
+// typedef struct s_minishell
+// {
+// 	int		*ext_st;
+// 	int		fd[2];
+// 	char	*line;
+// 	char	*prompt;
+// 	t_list	*cmd;
+// 	t_list	*env;
+// }	t_minishell;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
