@@ -6,7 +6,7 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:07:25 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/18 09:05:16 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/20 11:00:30 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,32 @@ void *ft_memcpy(void *restrict dst, const void *src, size_t n)
     while(n--)
         *((char *)dst++) = *((char *)src++);
     return(new_str); 
+}
+char	*ft_strstr1(const char *haystack, const char *needle)
+{
+	int i;
+	int j;
+
+	i = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] != '\0')
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j] && haystack[i + j] != '\0')
+		{
+			if (needle[j + 1] == '\0')
+				return ((char *)&haystack[i]);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int ft_isspace(int c)
+{
+    if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r')
+        return(c);
+    return(0);
 }
