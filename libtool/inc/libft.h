@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:51:45 by faksouss          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/05/20 16:24:49 by faksouss         ###   ########.fr       */
+=======
+/*   Updated: 2023/05/18 09:10:26 by nbouljih         ###   ########.fr       */
+>>>>>>> 4d35b4466b15d2c3994d628c214774d8f9ed9446
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +53,6 @@ typedef struct s_list
 	int				acs;
 	struct s_list	*next;
 }	t_list;
-
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp; /* bits per pixel */
-	int		line_len;
-	int		endian;
-}	t_img;
-
-typedef struct f_mlx_tools{
-    void *mlx;
-    void *win;
-    t_img *img;
-} t_mlx_tools;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
