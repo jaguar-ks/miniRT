@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:10:03 by faksouss          #+#    #+#             */
-/*   Updated: 2023/03/28 02:11:28 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:37:17 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*take_line(char *r)
 		return (NULL);
 	else
 		i = ft_strchr(r, '\n') - r;
-	ln = ft_substr(r, 0, i);
+	ln = ft_substr(r, 0, i + 1);
 	return (ln);
 }
 
