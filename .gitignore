@@ -1,6 +1,8 @@
 .vscode
 a.out
 tst.rt
+.DS_Store
+s_tester
 libtool/obj/ft_atoi.o
 libtool/obj/ft_bzero.o
 libtool/obj/ft_calloc.o
