@@ -6,7 +6,7 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 20:34:11 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/28 20:43:36 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,10 @@ void    _miniRT(char *fl)
 void detect_memory_leaks() {
     system("leaks a.out");
 }
+
 int main(int ac, char **av){
 	if (ac == 2)
-	{
 		_miniRT(av[1]);
-	}
 	else
 	{
 		ft_printf("Error : Bad number of args\n", 2);
