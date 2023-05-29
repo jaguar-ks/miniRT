@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 16:47:59 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/29 05:31:53 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void    check_Alpha(char **string)
 void get_Alpha(t_rt *rt)
 {
     char    *tmp;
-    int     i;
+    size_t     i;
     t_lines lines[] = {
         {"A ", ft_Alight, 3},
         {"C ", ft_Cam, 4},
@@ -88,7 +88,7 @@ void    len_elem(char **string,int *pl, int *sp, int *cy)
 }
 void init_rt(t_rt *rt)
 {
-    char    **tok;
+    // char    **tok;
     check_Alpha(rt->fl);
     get_Alpha(rt);
     // printf_tab(rt);

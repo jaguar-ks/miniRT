@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:48:55 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 20:30:49 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/29 05:44:47 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ void    get_cy(char **array, t_rt *rt)
             cy->dmt = ft_atof(cy_val[3]);
             cy->hgt = ft_atof(cy_val[4]);
             ft_cy_rgb(cy_val[5], cy);
+            add_Obj(&rt->object, (void *)cy, CYLENDER);
         }
+        i++;
     }
-    
 }
 
 void    ft_cy(t_rt *rt, int count)

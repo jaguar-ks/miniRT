@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:30 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 20:35:32 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/29 05:56:39 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void add_Obj(t_object **lst, void* object, int type)
     n_obj->objct = object;
     n_obj->type = type;
     n_obj->next = NULL;
-    if (lst || *lst) 
+    if (!(*lst)) 
         {
             *lst = n_obj;
             i++;
@@ -63,14 +63,17 @@ void print_objects(t_rt *rt)
             printf("Plane Color: RGB(%d, %d, %d)\n", plane->clr.r, plane->clr.g, plane->clr.b);
             printf("Plane Coordinates: (%f, %f, %f)\n", plane->crd.x, plane->crd.y, plane->crd.z);
         }
-        // else if (obj->type == SPHERE)
-        // {
-        //     t_sphere *sphere = (t_sphere *)obj->objct;
-        //     printf("Object Type: Sphere\n");
-        //     printf("Sphere Color: RGB(%d, %d, %d)\n", sphere->clr.r, sphere->clr.g, sphere->clr.b);
-        //     printf("Sphere Center: (%f, %f, %f)\n", sphere->center.x, sphere->center.y, sphere->center.z);
-        //     printf("Sphere Radius: %f\n", sphere->radius);
-        // }
+        if (obj->type == SPHERE)
+        {
+            t_sphere *sphere = (t_sphere *)obj->objct;
+            printf("Object Type: Sphere\n");
+            printf("Sphere Color: RGB(%d, %d, %d)\n", sphere->clr.r, sphere->clr.g, sphere->clr.b);
+            printf("Sphere crd: (%f, %f, %f)\n", sphere->crd.x, sphere->crd.y, sphere->crd.z);
+            printf("Sphere dmt: %f\n", sphere->dmt);
+        }
+        if (obj->type == CYLENDER)
+            printf("Object Type: Cylender\n");
+
         // Add more else if conditions for other object types
 
         printf("\n");

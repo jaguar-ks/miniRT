@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pl2.c                                           :+:      :+:    :+:   */
+/*   ft_pl.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:15:39 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 18:57:19 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/29 05:57:39 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,4 @@ void ft_pl(t_rt *rt, int count)
         ft_printf("Error: Invalid array or words in pl\n", 2);
         exit(1);
     }
-    print_objects(rt);
 }

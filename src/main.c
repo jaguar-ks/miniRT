@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 20:43:36 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/29 06:04:40 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ char *read_all_lines(const char *filename)
     char *line;
     char *all_lines = NULL;
     size_t total_size = 0;
-    ssize_t read_size;
+    // ssize_t read_size;
     int fd = open(filename, O_RDONLY);
 
     if (fd == -1) {
         perror("Error: Opening the file");
-        return NULL;
+        exit(EXIT_FAILURE);
     }
 
     while ((line = get_next_line(fd)) != NULL) {
@@ -80,7 +80,7 @@ char *read_all_lines(const char *filename)
 
 char    **read_file(char *fl)
 {
-	int     fd;
+	// int     fd;
 	char    *r;
 	char    **sp;
 
@@ -112,6 +112,7 @@ void    _miniRT(char *fl)
 		exit(1);
 	}
 	init_rt(&rt);
+    print_objects(&rt);
 	// free(rt.al);
 	// free(rt.cam);
 	// free(rt.lt);
