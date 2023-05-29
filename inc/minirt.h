@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/30 14:04:30 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/29 09:35:44 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include"../libtool/inc/libft.h"
 #include "../get_next_line/get_next_line.h"
-# include<mlx.h>
+// # include<mlx.h>
 #include <stdbool.h>
 #include <float.h>
 
@@ -199,6 +199,7 @@ t_vctr  unit_vctr(t_vctr v);
 t_vctr  cros_prdct(t_vctr v1, t_vctr v2);
 double  dgr_to_rd(double  angle);
 int     double_equality(double a, double b);
+int     less_then(double *a, double b);
 /*********************************************/
 /*******************|drawing|********************/
 void    render(t_rt *rt);
@@ -206,6 +207,8 @@ void    init_mlx(t_mlx_tools *mlx);
 void    init_img(t_mlx_tools *mlx);
 void    init_scene(t_scn **scn, t_rt *rt);
 t_ray   make_ray(t_scn *scn, double x, double y);
+int	    encode_rgb(t_rgb *cl);
+void	img_pix_put(t_img *img, int x, int y, int color);
 /************************************************/
 
 #endif

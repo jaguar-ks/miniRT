@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:36:56 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/30 14:04:51 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/29 09:35:58 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,18 @@ double  dgr_to_rd(double  angle)
     return (angle * M_PI / 180);
 }
 
-int    double_equality(double a, double b) {
-    if(fabs(a - b) < EPS)
+int    double_equality(double a, double b)
+{
+    if(fabs(a - b) <= EPS)
         return (1);
     else
         return (0);
+}
+
+int less_then(double *a, double b)
+{
+    if (*a - b <= EPS)
+        return (1);
+    else
+        return (*a = b, 0);
 }

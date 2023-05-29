@@ -6,7 +6,7 @@
 #    By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 15:07:02 by faksouss          #+#    #+#              #
-#    Updated: 2023/05/30 09:50:41 by faksouss         ###   ########.fr        #
+#    Updated: 2023/05/29 09:14:35 by faksouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,21 +17,26 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 SRC = src/main.c\
-		src/parss/ft_Alight.c\
-		src/parss/ft_Cam.c\
-		src/parss/ft_cy.c\
-		src/parss/ft_cy_ut.c\
-		src/parss/ft_Light.c\
-		src/parss/ft_pl.c\
-		src/parss/ft_sp.c\
-		src/parss/ft_sp_ut.c\
+		src/draw/send_rayes.c\
+		src/draw/render.c\
+		src/draw/img_utils.c\
 		src/parss/list_utils.c\
+		src/parss/ft_cy_ut.c\
 		src/parss/my_utils.c\
-		src/parss/parse.c\
-		src/parss/parse2.c\
-		src/parss/parse_utils.c\
 		src/parss/pl_ut.c\
+		src/parss/ft_cy.c\
+		src/parss/ft_pl.c\
 		src/parss/pt.c\
+		src/parss/parse_utils.c\
+		src/parss/ft_sp_ut.c\
+		src/parss/parse2.c\
+		src/parss/ft_Light.c\
+		src/parss/ft_Alight.c\
+		src/parss/parse.c\
+		src/parss/ft_sp.c\
+		src/parss/ft_Cam.c\
+		src/math/vecrtors_operations_2.c\
+		src/math/vecrtors_operations.c\
 		get_next_line/get_next_line.c\
 		get_next_line/get_next_line_utils.c
 
