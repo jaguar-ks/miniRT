@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 09:35:44 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/29 10:09:34 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ t_vctr  cros_prdct(t_vctr v1, t_vctr v2);
 double  dgr_to_rd(double  angle);
 int     double_equality(double a, double b);
 int     less_then(double *a, double b);
+int check_sph_intersection(t_sphere *sp, t_ray *ray, double *t);
 /*********************************************/
 /*******************|drawing|********************/
 void    render(t_rt *rt);

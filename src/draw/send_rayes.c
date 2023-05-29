@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/29 09:34:38 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/29 10:19:44 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,18 @@ int is_a_hit(void *obj, ObjectType type, t_ray *ray, double *t)
 {
     if (type == SPHERE)
         return (check_sph_intersection((t_sphere *)obj, ray, t));
+    return (0);
 }
 
-int    find_pix_color(t_rt *rt, t_scn *scn, t_ray *ray)
+int pix_color(void *hold, ObjectType type)
+{
+    t_sphere    *sp = (t_sphere *)hold;
+    if (type == SPHERE)
+        return (encode_rgb(&sp->clr));
+    return (0);
+}
+
+int    find_pix_color(t_rt *rt, t_ray *ray)
 {
     double      cls;
     double      t;
@@ -46,7 +55,7 @@ int    find_pix_color(t_rt *rt, t_scn *scn, t_ray *ray)
         obj = obj->next;
     }
     if (hold)
-        return ()
+        return (pix_color(hold->objct, hold->type));
     else
         return (encode_rgb(&rt->al->clr));
 }
@@ -68,7 +77,7 @@ void    send_rayes(t_rt *rt, t_scn *scn)
             x = (double)i * scn->hg;
             y = (double)j * scn->wg;
             ray = make_ray(scn, x, y);
-            img_pix_put(rt->mlx->img, i, j, find_pix_color(rt, scn, &ray));
+            img_pix_put(rt->mlx->img, i, j, find_pix_color(rt, &ray));
         }
     }
 }

@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:09:54 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/29 09:11:21 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/29 10:20:25 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	encode_rgb(t_rgb *cl)
 {
-    return (cl->x << 16 | cl->y << 8 | cl->z);
+    return (cl->r << 16 | cl->g << 8 | cl->b);
 }
 
 void	img_pix_put(t_img *img, int x, int y, int color)

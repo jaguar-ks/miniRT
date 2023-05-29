@@ -6,7 +6,7 @@
 #    By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 15:07:02 by faksouss          #+#    #+#              #
-#    Updated: 2023/05/29 09:14:35 by faksouss         ###   ########.fr        #
+#    Updated: 2023/05/29 10:11:02 by faksouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC = src/main.c\
 		src/parss/ft_sp.c\
 		src/parss/ft_Cam.c\
 		src/math/vecrtors_operations_2.c\
+		src/math/sphere_intersection.c\
 		src/math/vecrtors_operations.c\
 		get_next_line/get_next_line.c\
 		get_next_line/get_next_line_utils.c
