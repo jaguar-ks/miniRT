@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/29 10:19:44 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/29 10:39:07 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int    find_pix_color(t_rt *rt, t_ray *ray)
         return (encode_rgb(&rt->al->clr));
 }
 
-void    send_rayes(t_rt *rt, t_scn *scn)
+void    send_rays(t_rt *rt, t_scn *scn)
 {
     int     i;
     int     j;

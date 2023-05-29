@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 10:09:34 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/29 10:39:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,8 @@ void    init_scene(t_scn **scn, t_rt *rt);
 t_ray   make_ray(t_scn *scn, double x, double y);
 int	    encode_rgb(t_rgb *cl);
 void	img_pix_put(t_img *img, int x, int y, int color);
+void    send_rays(t_rt *rt, t_scn *scn);
+int     find_pix_color(t_rt *rt, t_ray *ray);
 /************************************************/
 
 #endif
