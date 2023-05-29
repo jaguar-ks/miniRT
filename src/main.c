@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:40:33 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/29 14:06:39 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,9 @@ void    _miniRT(char *fl)
 	// for (int i = 0; i < mtx_len(rt.fl); i++)
 	// 	printf("-> %s\n", rt.fl[i]);
 }
-void detect_memory_leaks() {
-    system("leaks a.out");
-}
+// void detect_memory_leaks() {
+//     system("leaks a.out");
+// }
 
 int main(int ac, char **av){
 	if (ac == 2)
