@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 05:27:16 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/30 14:00:28 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 
 # include"../libtool/inc/libft.h"
 #include "../get_next_line/get_next_line.h"
-// # include<mlx.h>
+# include<mlx.h>
 #include <stdbool.h>
 #include <float.h>
 
+# define EPS 0.00001
+# define HIGHT 800
+# define WIGHT 800
 typedef struct s_img
 {
 	void	*mlx_img;
@@ -65,6 +68,18 @@ typedef struct s_cam
     t_vctr      nrml_vctr;
     int         fov;
 }   t_cam;
+
+typedef struct s_scn
+{
+    t_crd   pst;
+    t_vctr  frwrd;
+    t_vctr  up;
+    t_vctr  rght;
+    double  aspct_rt;
+    double  v_agl;
+    double  hg;
+    double  wg;
+}   t_scn;
 
 /*   LIGHT   */
 typedef struct s_light
@@ -113,9 +128,15 @@ typedef struct s_object
     struct s_object *next;
 }   t_object;
 
+typedef struct s_ray
+{
+    t_crd   org;
+    t_vctr  drct;
+}   t_ray;
+
 typedef struct s_rt
 {
-    t_mlx_tools mlx;
+    t_mlx_tools *mlx;
     char        **fl;
     t_abt_lt    *al;
     t_cam       *cam;
@@ -168,4 +189,23 @@ void    ft_cy(t_rt *rt, int count);
 void    ft_cy_rgb(char *rgb_string, t_cylender *cy);
 void    ft_cy_vec(char *string, t_cylender *rt);
 void    ft_cy_cord(char *string, t_cylender *rt);
+/*******************|MATH|********************/
+t_vctr  add_vctr(t_vctr v1, t_vctr v2);
+t_vctr  mltp_vctr(t_vctr v1, t_vctr v2);
+t_vctr  vctr_scl(t_vctr v, double s);
+double  dot_prdct(t_vctr v1, t_vctr v2);
+double  vctr_len(t_vctr v);
+t_vctr  unit_vctr(t_vctr v);
+t_vctr  cros_prdct(t_vctr v1, t_vctr v2);
+double  dgr_to_rd(double  angle);
+bool    double_equality(double a, double b);
+/*********************************************/
+/*******************|drawing|********************/
+void    render(t_rt *rt);
+void    init_mlx(t_mlx_tools *mlx);
+void    init_img(t_mlx_tools *mlx);
+void    init_scene(t_scn **scn, t_rt *rt);
+t_ray   make_ray(t_scn *scn, double x, double y);
+/************************************************/
+
 #endif
