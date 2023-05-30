@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/30 14:00:17 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/30 14:06:42 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ t_ray   make_ray(t_scn *scn, double x, double y)
             vctr_scl(scn->up, y * scn->wg)), scn->frwrd);
     ray.drct = unit_vctr(ray.drct);
     return (ray);
+}
+
+void    find_pix_color(t_rt *rt, t_scn *scn, t_ray *ray)
+{
+
 }
 
 void    send_rayes(t_rt *rt, t_scn *scn)
@@ -40,6 +45,7 @@ void    send_rayes(t_rt *rt, t_scn *scn)
             x = (double)i * 2 / HIGHT - 1;
             y = (double)j * 2 / WIGHT - 1;
             ray = make_ray(scn, x, y);
+            find_pix_color(rt, scn, &ray);
         }
     }
 }

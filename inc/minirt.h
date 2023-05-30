@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/30 14:00:28 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/30 14:04:30 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ double  vctr_len(t_vctr v);
 t_vctr  unit_vctr(t_vctr v);
 t_vctr  cros_prdct(t_vctr v1, t_vctr v2);
 double  dgr_to_rd(double  angle);
-bool    double_equality(double a, double b);
+int     double_equality(double a, double b);
 /*********************************************/
 /*******************|drawing|********************/
 void    render(t_rt *rt);

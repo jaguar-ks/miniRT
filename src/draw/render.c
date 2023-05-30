@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/30 13:40:58 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/30 14:05:11 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    init_mlx(t_mlx_tools *mlx)
 {
     mlx->mlx = mlx_init();
     mlx->win = mlx_new_window(mlx->mlx, HIGHT, WIGHT, "MINIRT");
-    init_image(mlx;
+    init_image(mlx);
 }
 
 void    render(t_rt *rt)
