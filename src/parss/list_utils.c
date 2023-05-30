@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:30 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 05:56:39 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:26:44 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ void add_Obj(t_object **lst, void* object, int type)
     n_obj->objct = object;
     n_obj->type = type;
     n_obj->next = NULL;
-    if (!(*lst)) 
-        {
-            *lst = n_obj;
-            i++;
-        }
+    if (lst && !(*lst)) 
+    {
+        *lst = n_obj;
+        i++;
+    }
     else 
     {
         currentNode = *lst;
+        printf("HELLO\n");
         while (currentNode->next)
         {
             currentNode = currentNode->next;

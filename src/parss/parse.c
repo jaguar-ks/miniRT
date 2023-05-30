@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 05:31:53 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/30 09:53:06 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void    len_elem(char **string,int *pl, int *sp, int *cy)
 void init_rt(t_rt *rt)
 {
     // char    **tok;
+
     check_Alpha(rt->fl);
     get_Alpha(rt);
     // printf_tab(rt);

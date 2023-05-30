@@ -6,7 +6,7 @@
 #    By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 15:07:02 by faksouss          #+#    #+#              #
-#    Updated: 2023/05/29 05:31:10 by faksouss         ###   ########.fr        #
+#    Updated: 2023/05/30 09:50:41 by faksouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,22 +16,22 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 RM = rm -rf
 
-SRC = src/list_utils.c\
-		src/ft_cy_ut.c\
-		src/my_utils.c\
-		src/pl_ut.c\
-		src/ft_cy.c\
-		src/ft_pl.c\
-		src/pt.c\
-		src/parse_utils.c\
-		src/ft_sp_ut.c\
-		src/parse2.c\
-		src/ft_Light.c\
-		src/ft_Alight.c\
-		src/parse.c\
-		src/ft_sp.c\
-		src/ft_Cam.c\
-		src/main.c\
+SRC = src/main.c\
+		src/parss/ft_Alight.c\
+		src/parss/ft_Cam.c\
+		src/parss/ft_cy.c\
+		src/parss/ft_cy_ut.c\
+		src/parss/ft_Light.c\
+		src/parss/ft_pl.c\
+		src/parss/ft_sp.c\
+		src/parss/ft_sp_ut.c\
+		src/parss/list_utils.c\
+		src/parss/my_utils.c\
+		src/parss/parse.c\
+		src/parss/parse2.c\
+		src/parss/parse_utils.c\
+		src/parss/pl_ut.c\
+		src/parss/pt.c\
 		get_next_line/get_next_line.c\
 		get_next_line/get_next_line_utils.c
 
