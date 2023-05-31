@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:14:09 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:05:54 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ void    ft_light_cordCheck(char **ptr, t_rt *rt)
 {
     if (ptr != NULL && mtx_len(ptr) == 3)
     {
-        if ((rt->lt->crd.x = ft_atof(ptr[0])) == EXIT_FAILURE || ( rt->lt->crd.y = ft_atof(ptr[1])) == EXIT_FAILURE ||
-                 (rt->lt->crd.z = ft_atof(ptr[2])) == EXIT_FAILURE)
-            exit(1);
+        if ((rt->lt->crd.x = ft_atof(ptr[0])) == 1337 || ( rt->lt->crd.y = ft_atof(ptr[1])) == 1337 ||
+                 (rt->lt->crd.z = ft_atof(ptr[2])) == 1337){
+                    printf("Error : atof\n");
+                    exit(1);
+                 }
     }
 }
 void ft_light_Coordination(char *string, t_rt *rt)

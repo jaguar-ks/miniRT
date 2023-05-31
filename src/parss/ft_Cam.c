@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 21:34:45 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:57:59 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ void    ft_CAm_cordCheck(char **ptr, t_rt *rt)
     if (ptr != NULL && mtx_len(ptr) == 3)
     {
         if ((rt->cam->crd.x = ft_atof(ptr[0])) == 1337 || ( rt->cam->crd.y = ft_atof(ptr[1])) == 1337 ||
-                 (rt->cam->crd.z = ft_atof(ptr[2])) == 1337)
-            exit(1);
+                 (rt->cam->crd.z = ft_atof(ptr[2])) == 1337){
+                    printf("Error : atof\n");
+                    exit(1);
+                 }
     }
 }
 void ft_Cam_Coordination(char *string, t_rt *rt)

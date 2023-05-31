@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/31 13:26:14 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 14:38:58 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,17 @@ void    send_rays(t_rt *rt, t_scn *scn)
     while (--i > 0)
     {
         j = WIGHT;
-        printf("ROW[%d]_________________________________________\n", i);
+        // printf("ROW[%d]_________________________________________\n", i);
         while (--j > 0)
         {
-            printf("COL[%d]_________________________________________\n", j);
+            // printf("COL[%d]_________________________________________\n", j);
             // sleep(1);
             x = (double)i * 2 / HIGHT - 1;
             y = (double)j * 2 / WIGHT - 1;
             ray.drct = add_vctr(add_vctr(vctr_scl(scn->rght, y), vctr_scl(scn->up, x)),
                     scn->frwrd);
             ray.drct = unit_vctr(ray.drct);
-            print_cam_ray(scn, &ray, i, j);
+            // print_cam_ray(scn, &ray, i, j);
             img_pix_put(rt->mlx->img, i , j, find_pix_color(rt, &ray));
         }
     }
