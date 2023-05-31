@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   my_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:37:12 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 18:57:43 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 static bool is_delimiter(char c)
 {

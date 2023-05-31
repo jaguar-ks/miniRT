@@ -6,11 +6,11 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:30 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/30 12:26:44 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:41:41 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 void add_Obj(t_object **lst, void* object, int type)
 {
@@ -35,7 +35,6 @@ void add_Obj(t_object **lst, void* object, int type)
     else 
     {
         currentNode = *lst;
-        printf("HELLO\n");
         while (currentNode->next)
         {
             currentNode = currentNode->next;

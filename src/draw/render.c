@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/30 14:05:11 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:37:28 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void    init_scene(t_scn **scn, t_rt *rt)
         (*scn)->pst = rt->cam->crd;
         (*scn)->aspct_rt = (double)HIGHT / (double)WIGHT;
         (*scn)->v_agl = dgr_to_rd(rt->cam->fov);
-        (*scn)->hg = tan((*scn)->v_agl / 2) * 2;
+        (*scn)->hg = tan((*scn)->v_agl / 2);
         (*scn)->wg = (*scn)->hg * (*scn)->aspct_rt;
         (*scn)->frwrd = rt->cam->nrml_vctr;
-        (*scn)->up = unit_vctr(cros_prdct((*scn)->frwrd, (t_vctr){0, 1, 0}));
+        (*scn)->up = unit_vctr(cros_prdct((t_vctr){1, 0, 0}, (*scn)->frwrd));
         (*scn)->rght = unit_vctr(cros_prdct((*scn)->frwrd, (*scn)->up));
     }
 }
@@ -43,8 +43,9 @@ void    init_img(t_mlx_tools *mlx)
 void    init_mlx(t_mlx_tools *mlx)
 {
     mlx->mlx = mlx_init();
+    printf("HERE\n");
     mlx->win = mlx_new_window(mlx->mlx, HIGHT, WIGHT, "MINIRT");
-    init_image(mlx);
+    init_img(mlx);
 }
 
 void    render(t_rt *rt)
@@ -58,6 +59,9 @@ void    render(t_rt *rt)
         exit(EXIT_FAILURE);
     }
     init_scene(&scn, rt);
+    rt->mlx = (t_mlx_tools *)malloc(sizeof(t_mlx_tools));
     init_mlx(rt->mlx);
     send_rays(rt, scn);
+    mlx_put_image_to_window(rt->mlx->mlx, rt->mlx->win, rt->mlx->img->mlx_img, 0, 0);
+    mlx_loop(rt->mlx->mlx);
 }

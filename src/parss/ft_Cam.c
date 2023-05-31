@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_Cam.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 21:34:45 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/24 11:57:36 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 int ft_rangeCheck(t_crd *vec)
 {

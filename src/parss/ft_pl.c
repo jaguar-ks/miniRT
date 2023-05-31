@@ -6,11 +6,11 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:15:39 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/30 12:23:12 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 void ft_rgb_pl(char *rgb_string, t_plane *pl)
 {

@@ -6,11 +6,11 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:48:55 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 05:44:47 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 void    get_cy(char **array, t_rt *rt)
 {

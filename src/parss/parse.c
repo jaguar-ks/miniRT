@@ -6,11 +6,11 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/30 09:53:06 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 void    check_Alpha(char **string)
 {

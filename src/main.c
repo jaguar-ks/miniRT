@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/30 12:42:34 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:40:33 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void    _miniRT(char *fl)
 		exit(1);
 	}
 	init_rt(&rt);
-    print_objects(&rt);
+    // print_objects(&rt);
     render(&rt);
 	// free(rt.al);
 	// free(rt.cam);

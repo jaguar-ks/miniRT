@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sp.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:50:18 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 18:57:19 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 void    put_sp(t_sphere *sp, char **ptr)
 {

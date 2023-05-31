@@ -6,20 +6,20 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 10:39:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:28:01 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include"../libtool/inc/libft.h"
+#include"../libtool/inc/libft.h"
 #include "../get_next_line/get_next_line.h"
-// # include<mlx.h>
+#include<mlx.h>
 #include <stdbool.h>
 #include <float.h>
 
-# define EPS 0.00001
+# define EPS 0.0001
 # define HIGHT 800
 # define WIGHT 800
 typedef struct s_img
@@ -212,6 +212,7 @@ int	    encode_rgb(t_rgb *cl);
 void	img_pix_put(t_img *img, int x, int y, int color);
 void    send_rays(t_rt *rt, t_scn *scn);
 int     find_pix_color(t_rt *rt, t_ray *ray);
+void    init_img(t_mlx_tools *mlx);
 /************************************************/
 
 #endif

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sp_ut.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:31:00 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/28 18:44:04 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 void    ft_sp_rgb(char *rgb_string, t_sphere *sp)
 {
