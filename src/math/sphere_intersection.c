@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:36:28 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/31 14:39:04 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:23:43 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,8 @@ int check_sph_intersection(t_sphere *sp, t_ray *ray, double *t)
         *t = t2;
     return (1);
 }
+
+// int check_pln_intersection(t_plane *sp, t_ray *ray, double *t)
+// {
+    
+// }
