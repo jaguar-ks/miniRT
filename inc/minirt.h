@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 14:07:30 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:25:09 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include"../libtool/inc/libft.h"
 #include "../get_next_line/get_next_line.h"
-// #include<mlx.h>
+#include<mlx.h>
 #include <stdbool.h>
 #include <float.h>
 
