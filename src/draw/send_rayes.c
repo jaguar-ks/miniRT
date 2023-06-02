@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/01 19:26:38 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/02 17:22:14 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ void    send_rays(t_rt *rt, t_scn *scn)
         {
             // printf("COL[%d]_________________________________________\n", j);
             // sleep(1);
-            x = (double)i * 2 / HIGHT - 1;
-            y = (double)j * 2 / WIGHT - 1;
-            ray.drct = add_vctr(add_vctr(vctr_scl(scn->rght, -x), vctr_scl(scn->up, -y)),
+            x = (((double)i + 1) * 2) / HIGHT - 1;
+            y = (((double)j + 1) * 2) / WIGHT - 1;
+            ray.drct = add_vctr(add_vctr(vctr_scl(scn->rght, x * scn->hg), vctr_scl(scn->up, y * scn->wg)),
                     scn->frwrd);
             ray.drct = unit_vctr(ray.drct);
             // print_cam_ray(scn, &ray, i, j);

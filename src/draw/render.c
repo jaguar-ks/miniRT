@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/31 14:39:45 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/02 17:04:27 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void    init_scene(t_scn **scn, t_rt *rt)
         (*scn)->hg = tan((*scn)->v_agl / 2);
         (*scn)->wg = (*scn)->hg * (*scn)->aspct_rt;
         (*scn)->frwrd = rt->cam->nrml_vctr;
-        (*scn)->up = unit_vctr(cros_prdct((t_vctr){1, 0, 0}, (*scn)->frwrd));
-        (*scn)->rght = unit_vctr(cros_prdct((*scn)->frwrd, (*scn)->up));
+        (*scn)->frwrd.x += EPS;
+        (*scn)->rght = unit_vctr(cros_prdct((*scn)->frwrd, (t_vctr){0, 1, 0}));
+        (*scn)->up = unit_vctr(cros_prdct((*scn)->rght, (*scn)->frwrd));
     }
 }
 
