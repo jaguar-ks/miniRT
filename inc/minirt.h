@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/01 19:25:09 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 19:24:03 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <float.h>
 
 # define EPS 0.0001
-# define HIGHT 800
+# define HIGHT 1200
 # define WIGHT 800
 typedef struct s_img
 {

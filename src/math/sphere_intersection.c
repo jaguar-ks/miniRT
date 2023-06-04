@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:36:28 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/04 18:46:54 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 19:13:15 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ int	check_pln_intersection(t_plane *pl, t_ray *ray, double *t)
     t_vctr  v;
 
     v = sub_vctr(ray->org, pl->crd);
-	t1 = (dot_prdct(pl->nrml_vctr, pl->crd)
-			- dot_prdct(pl->nrml_vctr, ray->org))
+	t1 = (dot_prdct(sub_vctr(pl->crd, ray->org), pl->nrml_vctr))
 		/ dot_prdct(pl->nrml_vctr, ray->drct);
 	if (t1 > EPS)
 		return (*t = t1, 1);

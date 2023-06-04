@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/04 18:42:20 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 19:20:46 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	send_rays(t_rt *rt, t_scn *scn)
 		{
 			x = (((double)i) * 2) / HIGHT - 1;
 			y = (((double)j) * 2) / WIGHT - 1;
-			ray.drct = add_vctr(add_vctr(vctr_scl(scn->rght, x * scn->hg),
+			ray.drct = add_vctr(add_vctr(vctr_scl(scn->rght, -x * scn->hg),
 						vctr_scl(scn->up, y * scn->wg)), scn->frwrd);
 			ray.drct = unit_vctr(ray.drct);
 			img_pix_put(rt->mlx->img, i, j, find_pix_color(rt, &ray));
