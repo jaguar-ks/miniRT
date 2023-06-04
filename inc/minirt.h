@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/04 19:24:03 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:41:12 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <float.h>
 
 # define EPS 0.0001
-# define HIGHT 1200
+# define HIGHT 800
 # define WIGHT 800
 typedef struct s_img
 {
@@ -200,8 +200,9 @@ t_vctr  cros_prdct(t_vctr v1, t_vctr v2);
 double  dgr_to_rd(double  angle);
 int     double_equality(double a, double b);
 int     less_then(double *a, double b);
-int check_sph_intersection(t_sphere *sp, t_ray *ray, double *t);
-int check_pln_intersection(t_plane *sp, t_ray *ray, double *t);
+int     check_sph_intersection(t_sphere *sp, t_ray *ray, double *t);
+int     check_pln_intersection(t_plane *sp, t_ray *ray, double *t);
+int     check_cyl_intersection(t_cylender *cy, t_ray *ray, double *t);
 /*********************************************/
 /*******************|drawing|********************/
 void    render(t_rt *rt);

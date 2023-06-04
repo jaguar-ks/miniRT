@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/04 19:20:46 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:43:29 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	is_a_hit(void *obj, ObjectType type, t_ray *ray, double *t)
 		return (check_sph_intersection((t_sphere *)obj, ray, t));
 	if (type == PLANE)
 		return (check_pln_intersection((t_plane *)obj, ray, t));
+	if (type == CYLENDER)
+		return (check_cyl_intersection((t_cylender *)obj, ray, t));
 	return (0);
 }
 
@@ -36,6 +38,7 @@ int	pix_color(void *hold, ObjectType type)
 {
 	t_sphere	*sp;
 	t_plane		*pl;
+	t_cylender  *cy;
 
 	if (type == SPHERE)
 	{
@@ -46,6 +49,11 @@ int	pix_color(void *hold, ObjectType type)
 	{
 		pl = (t_plane *)hold;
 		return (encode_rgb(&pl->clr));
+	}
+	if (type == CYLENDER)
+	{
+		cy = (t_cylender *)hold;
+		return (encode_rgb(&cy->clr));
 	}
 	return (0);
 }
