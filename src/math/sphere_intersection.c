@@ -6,29 +6,35 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:36:28 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/02 20:50:59 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:46:54 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../inc/minirt.h"
 
+t_vctr  sub_vctr(t_vctr v1, t_vctr v2)
+{
+    return ((t_vctr){v1.x - v2.x, v1.y - v2.y, v1.z - v2.z});
+}
+
 int	check_sph_intersection(t_sphere *sp, t_ray *ray, double *t)
 {
 	t_vctr	abc;
+	t_vctr	v;
 	double	t1;
 	double	t2;
 	double	delta;
 
+    v = sub_vctr(ray->org, sp->crd);
 	abc.x = dot_prdct(ray->drct, ray->drct);
-	abc.y = 2 * (ray->drct.x * sp->crd.x + ray->drct.y * sp->crd.y + ray->drct.z
-			* sp->crd.z);
-	abc.z = dot_prdct(sp->crd, sp->crd) - pow(sp->dmt / 2, 2);
-	delta = pow(abc.y, 2) - 4 * (abc.y * abc.z);
-	if (delta < 0)
+	abc.y = 2 * dot_prdct(ray->drct, v);
+	abc.z = dot_prdct(v, v) - pow(sp->dmt / 2, 2);
+	delta = pow(abc.y, 2) - 4 * abc.x * abc.z;
+	if (delta < EPS)
 		return (0);
 	t1 = -abc.y + sqrt(delta) / 2 * abc.x;
 	t2 = -abc.y - sqrt(delta) / 2 * abc.x;
-	if (t1 < t2)
+	if (t1 - t2 < EPS)
 		*t = t1;
 	else
 		*t = t2;
@@ -38,7 +44,9 @@ int	check_sph_intersection(t_sphere *sp, t_ray *ray, double *t)
 int	check_pln_intersection(t_plane *pl, t_ray *ray, double *t)
 {
 	double	t1;
+    t_vctr  v;
 
+    v = sub_vctr(ray->org, pl->crd);
 	t1 = (dot_prdct(pl->nrml_vctr, pl->crd)
 			- dot_prdct(pl->nrml_vctr, ray->org))
 		/ dot_prdct(pl->nrml_vctr, ray->drct);

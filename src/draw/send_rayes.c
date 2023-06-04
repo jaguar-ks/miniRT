@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/02 21:03:59 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:42:20 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,11 @@ int	find_pix_color(t_rt *rt, t_ray *ray)
 	cls = DBL_MAX;
 	while (obj != NULL)
 	{
-		if (is_a_hit(obj->objct, obj->type, ray, &t) && !less_then(&cls, t))
+		if (is_a_hit(obj->objct, obj->type, ray, &t) && (cls > t))
+        {
+            cls = t;
 			hold = obj;
+        }
 		obj = obj->next;
 	}
 	if (hold)

@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:36:56 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/02 20:48:10 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:30:13 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	double_equality(double a, double b)
 
 int	less_then(double *a, double b)
 {
-	if (*a - b <= EPS)
+	if (*a <= b)
 		return (1);
 	else
 		return (*a = b, 0);

@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:31:13 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/02 20:49:03 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:35:58 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_vctr	vctr_scl(t_vctr v, double s)
 
 double	dot_prdct(t_vctr v1, t_vctr v2)
 {
-	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
+	return ((v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z));
 }
 
 double	vctr_len(t_vctr v)
