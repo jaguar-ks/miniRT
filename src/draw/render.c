@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/05 05:56:03 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:19:40 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ t_vctr	find_right_vctr(t_vctr frwrd)
 	t_vctr	v;
 	t_vctr	r;
 
-	v = {1, 0, 0};
+	v = (t_vctr){0, 1, 0};
 	r = cros_prdct(frwrd, v);
 	if (!r.x && !r.y && !r.z)
 	{
-		v = {0, 1, 0};
+		v = (t_vctr){1, 0, 0};
 		r = cros_prdct(frwrd, v);
 	}
 	if (!r.x && !r.y && !r.z)
 	{
-		v = {0, 0, 1};
+		v = (t_vctr){0, 0, 1};
 		r = cros_prdct(frwrd, v);
 	}
 	return (r);

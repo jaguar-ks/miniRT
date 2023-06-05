@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:36:28 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/04 22:58:23 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:27:33 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	check_sph_intersection(t_sphere *sp, t_ray *ray, double *t)
 	delta = pow(abc.y, 2) - 4 * abc.x * abc.z;
 	if (delta < EPS)
 		return (0);
-	t1 = -abc.y + sqrt(delta) / 2 * abc.x;
-	t2 = -abc.y - sqrt(delta) / 2 * abc.x;
+	t1 = (-abc.y + sqrt(delta)) / (2 * abc.x);
+	t2 = (-abc.y - sqrt(delta)) / (2 * abc.x);
     if (t1 - t2 < EPS)
 		*t = t1;
 	else
@@ -75,7 +75,7 @@ int check_cyl_intersection(t_cylender *cy, t_ray *ray, double *t)
     if (t2 < EPS)
         return (0);
     t1 = dot_prdct(ray->drct, cy->nrml_vctr) * t1 + dot_prdct(v, cy->nrml_vctr);
-    t1 = dot_prdct(ray->drct, cy->nrml_vctr) * t2 + dot_prdct(v, cy->nrml_vctr);
+    t2 = dot_prdct(ray->drct, cy->nrml_vctr) * t2 + dot_prdct(v, cy->nrml_vctr);
     if (t2 >= EPS && t2 <= cy->hgt)
         return (*t = (-s.y + sqrt(delta)) / (2 * s.x), 1);
     if (t1 >= EPS && t1 <= cy->hgt)
