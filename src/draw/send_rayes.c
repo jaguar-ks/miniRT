@@ -6,22 +6,11 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/04 20:43:29 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/05 05:22:44 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../inc/minirt.h"
-
-t_ray	make_ray(t_scn *scn, double x, double y)
-{
-	t_ray	ray;
-
-	ray.org = scn->pst;
-	ray.drct = add_vctr(add_vctr(vctr_scl(scn->up, x), vctr_scl(scn->rght, -y)),
-			scn->frwrd);
-	ray.drct = unit_vctr(ray.drct);
-	return (ray);
-}
 
 int	is_a_hit(void *obj, ObjectType type, t_ray *ray, double *t)
 {

@@ -6,11 +6,31 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/04 19:24:38 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/05 05:56:03 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../inc/minirt.h"
+
+t_vctr	find_right_vctr(t_vctr frwrd)
+{
+	t_vctr	v;
+	t_vctr	r;
+
+	v = {1, 0, 0};
+	r = cros_prdct(frwrd, v);
+	if (!r.x && !r.y && !r.z)
+	{
+		v = {0, 1, 0};
+		r = cros_prdct(frwrd, v);
+	}
+	if (!r.x && !r.y && !r.z)
+	{
+		v = {0, 0, 1};
+		r = cros_prdct(frwrd, v);
+	}
+	return (r);
+}
 
 void	init_scene(t_scn **scn, t_rt *rt)
 {
@@ -22,7 +42,7 @@ void	init_scene(t_scn **scn, t_rt *rt)
 		(*scn)->wg = tan((*scn)->v_agl / 2);
 		(*scn)->hg = (*scn)->wg * (*scn)->aspct_rt;
 		(*scn)->frwrd = rt->cam->nrml_vctr;
-		(*scn)->rght = unit_vctr(cros_prdct((*scn)->frwrd, (t_vctr){0, 1, 0}));
+		(*scn)->rght = unit_vctr(find_right_vctr((*scn)->frwrd));
 		(*scn)->up = unit_vctr(cros_prdct((*scn)->rght, (*scn)->frwrd));
 	}
 }
