@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:36:28 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/05 22:34:41 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:40:59 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int	check_cyl_intersection(t_cylender *cy, t_ray *ray, double *t)
 		cy->nrml_vctr);
 	d.z = dot_prdct(ray->drct, cy->nrml_vctr) * d.z + dot_prdct(v,
 		cy->nrml_vctr);
-	if (d.z >= EPS && d.z <= cy->hgt)
-		return (*t = (-s.y + sqrt(d.x)) / (2 * s.x), 1);
 	if (d.y >= EPS && d.y <= cy->hgt)
 		return (*t = (-s.y - sqrt(d.x)) / (2 * s.x), 1);
+	if (d.z >= EPS && d.z <= cy->hgt)
+		return (*t = (-s.y + sqrt(d.x)) / (2 * s.x), 1);
 	return (0);
 }
