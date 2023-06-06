@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/06 00:34:44 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/06 01:50:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	pix_color(t_rt *rt, t_object *obj, t_ray *ray, double t)
 	while (tmp)
 	{
 		if (is_a_hit(tmp->objct, tmp->type, &r, &t) && t)
-			return (); // shadow
+			return ();// shadow
 		tmp = tmp->next;
 	}
-	return (); // light
+	return ();// light
 }
 
 int	find_pix_color(t_rt *rt, t_ray *ray)
