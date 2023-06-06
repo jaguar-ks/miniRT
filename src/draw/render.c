@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 t_vctr	find_right_vctr(t_vctr frwrd)
 {
@@ -57,7 +57,7 @@ void	init_img(t_mlx_tools *mlx)
 	}
 	mlx->img->mlx_img = mlx_new_image(mlx->mlx, HIGHT, WIGHT);
 	mlx->img->addr = mlx_get_data_addr(mlx->img->mlx_img, &mlx->img->bpp,
-			&mlx->img->line_len, &mlx->img->endian);
+		&mlx->img->line_len, &mlx->img->endian);
 }
 
 void	init_mlx(t_mlx_tools *mlx)
@@ -81,7 +81,7 @@ void	render(t_rt *rt)
 	rt->mlx = (t_mlx_tools *)malloc(sizeof(t_mlx_tools));
 	init_mlx(rt->mlx);
 	send_rays(rt, scn);
-	mlx_put_image_to_window(rt->mlx->mlx, rt->mlx->win,
-		rt->mlx->img->mlx_img, 0, 0);
+	mlx_put_image_to_window(rt->mlx->mlx, rt->mlx->win, rt->mlx->img->mlx_img,
+		0, 0);
 	mlx_loop(rt->mlx->mlx);
 }

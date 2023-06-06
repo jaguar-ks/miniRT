@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 t_vctr	add_vctr(t_vctr v1, t_vctr v2)
 {

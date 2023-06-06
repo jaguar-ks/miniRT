@@ -12,16 +12,16 @@
 
 #include "../../inc/minirt.h"
 
-void    parse_obj(t_rt *rt)
+void	parse_obj(t_rt *rt)
 {
-    t_count x;
+	t_count	x;
 
-    x.cy = 0;
-    x.pl = 0;
-    x.ps = 0;
-    len_elem(rt->fl, &x.pl, &x.ps, &x.cy);
-    rt->object = NULL;
-    ft_pl(rt, x.pl);
-    ft_sp(rt, x.ps);
-    ft_cy(rt, x.cy);
+	x.cy = 0;
+	x.pl = 0;
+	x.ps = 0;
+	len_elem(rt->fl, &x.pl, &x.ps, &x.cy);
+	rt->object = NULL;
+	ft_pl(rt, x.pl);
+	ft_sp(rt, x.ps);
+	ft_cy(rt, x.cy);
 }
