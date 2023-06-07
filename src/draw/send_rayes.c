@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/06 01:50:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:33:00 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,29 @@ int	pix_color(t_rt *rt, t_object *obj, t_ray *ray, double t)
 {
 	t_ray		r;
 	t_object	*tmp;
-	double		t;
+	t_object	*hold;
+	double		t1;
+	double		cls;
 
+    hold = NULL;
+    cls = DBL_MAX;
 	r.org = add_vctr(ray->org, vctr_scl(ray->drct, t));
-	r.drct = sub_vctr(r.org, rt->lt->crd);
+	r.drct = unit_vctr(sub_vctr(r.org, rt->lt->crd));
 	tmp = rt->object;
+    if (!obj)
+        return(no_hit(rt->al)); // the ray in this case didn't hit anything
 	while (tmp)
 	{
-		if (is_a_hit(tmp->objct, tmp->type, &r, &t) && t)
-			return ();// shadow
+		if (is_a_hit(tmp->objct, tmp->type, &r, &t1) && (cls > t1) && (t1 > EPS))
+		{
+			cls = t1;
+			hold = obj;
+		}
 		tmp = tmp->next;
 	}
-	return ();// light
+    if (hold)
+		return (shadow(rt->al, obj)); // shadow
+	return (light_color(rt->al, rt->lt, obj, &r)); // light
 }
 
 int	find_pix_color(t_rt *rt, t_ray *ray)
@@ -60,7 +71,9 @@ int	find_pix_color(t_rt *rt, t_ray *ray)
 		}
 		obj = obj->next;
 	}
-	return (pix_color(rt, hold, ray, t));
+    if (hold)
+    	return (pix_color(rt, hold, ray, t));
+    return (0);
 }
 
 void	send_rays(t_rt *rt, t_scn *scn)

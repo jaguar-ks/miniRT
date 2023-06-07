@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/06 00:34:44 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/07 00:17:39 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,6 +222,9 @@ void				img_pix_put(t_img *img, int x, int y, int color);
 void				send_rays(t_rt *rt, t_scn *scn);
 int					find_pix_color(t_rt *rt, t_ray *ray);
 void				init_img(t_mlx_tools *mlx);
+int                 no_hit(t_abt_lt *am);
+int                 shadow(t_abt_lt *am, t_object *obj);
+int                 light_color(t_abt_lt *am, t_light *lg, t_object *obj, t_ray *ray);
 /************************************************/
 
 #endif

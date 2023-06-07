@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/07 00:26:15 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ void	get_Alpha(t_rt *rt)
 {
 	char	*tmp;
 	size_t	i;
-	t_lines	lines[];
-
-	lines[] = {{"A ", ft_Alight, 3}, {"C ", ft_Cam, 4}, {"L ", ft_light, 4}};
+	t_lines	lines[] = {{"A ", ft_Alight, 3}, {"C ", ft_Cam, 4}, {"L ", ft_light, 4}};
 	i = 0;
 	while (i < sizeof(lines) / sizeof(lines[0]))
 	{
