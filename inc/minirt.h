@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/07 00:17:39 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:41:22 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,13 @@ typedef struct s_ray
 	t_vctr			drct;
 }					t_ray;
 
+typedef struct s_hit_point
+{
+    t_vctr  nrm;
+    t_ray   r;
+    t_rgb   px_cl;
+    double  t;
+}   t_hit_point;
 typedef struct s_rt
 {
 	t_mlx_tools		*mlx;
