@@ -20,8 +20,7 @@
 //                 t_plane *plane = malloc(sizeof(t_plane));
 //                 if (!plane)
 //                 {
-//                     ft_printf("Error: Failed to allocate memory for plane\n",
-	1);
+//                     ft_printf("Error: Failed to allocate memory for plane\n",1);
 //                     exit(EXIT_FAILURE);
 //                 }
 
@@ -45,10 +44,8 @@
 //         for (t_object *obj = rt->object; obj != NULL; obj = obj->next)
 //         {
 //             t_plane *plane = (t_plane *)obj->objct;
-//             printf("RGB-> %d %d %d\nAddress: %p\n", plane->clr.r,
-	plane->clr.g, plane->clr.b, (void *)plane);
-//             printf("Cordination-> %f %f %f\nAddress: %p\n", plane->crd.x,
-	plane->crd.y, plane->crd.z, (void *)plane);
+//             printf("RGB-> %d %d %d\nAddress: %p\n", plane->clr.r,plane->clr.g, plane->clr.b, (void *)plane);
+//             printf("Cordination-> %f %f %f\nAddress: %p\n", plane->crd.x,plane->crd.y, plane->crd.z, (void *)plane);
 //         }
 //     }
 //     else

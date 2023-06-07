@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:56:33 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/07 00:25:55 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,7 @@ void	ft_Alight(char *line, t_rt *rt)
 		ratio = ft_atof(ptr[1]);
 		if (ratio < 0.0 || ratio > 1.0)
 		{
-			ft_printf("Error: Ambiant light's Ratio range should be btw [0.0,
-				1.0]\n", 1);
+			ft_printf("Error: Ambiant light's Ratio range should be btw [0.0,1.0]\n", 1);
 			exit(1);
 		}
 		rt->al->brightness = ratio;
