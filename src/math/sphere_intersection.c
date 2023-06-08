@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:36:28 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/06 00:37:19 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/08 05:25:39 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int	check_sph_intersection(t_sphere *sp, t_ray *ray, double *t)
 		return (0);
 	t1 = (-abc.y + sqrt(delta)) / (2 * abc.x);
 	t2 = (-abc.y - sqrt(delta)) / (2 * abc.x);
-	if (t1 - t2 < EPS)
+    if (t1 < EPS)
+        return (0);
+	if (t1 < t2)
 		*t = t1;
 	else
 		*t = t2;
@@ -44,13 +46,27 @@ int	check_sph_intersection(t_sphere *sp, t_ray *ray, double *t)
 int	check_pln_intersection(t_plane *pl, t_ray *ray, double *t)
 {
 	double	t1;
+	double	b;
 	t_vctr	v;
 
 	v = sub_vctr(ray->org, pl->crd);
-	t1 = (dot_prdct(sub_vctr(pl->crd, ray->org), pl->nrml_vctr))
-		/ dot_prdct(pl->nrml_vctr, ray->drct);
-	if (t1 > EPS)
-		return (*t = t1, 1);
+    b = dot_prdct(ray->drct, unit_vctr(pl->nrml_vctr));
+    if (b != 0)
+    {
+        t1 = (dot_prdct(v, unit_vctr(pl->nrml_vctr)) * -1) / b;
+        if (t1 < EPS)
+            return (0);
+        return (*t = t1, 1);
+    }
+    // cpy = vctr_scl(pl->nrml_vctr, -1);
+	// t1 = (dot_prdct(sub_vctr(pl->crd, ray->org), pl->nrml_vctr))
+	// 	/ dot_prdct(pl->nrml_vctr, ray->drct);
+	// t2 = (dot_prdct(sub_vctr(pl->crd, ray->org), cpy))
+	// 	/ dot_prdct(cpy, ray->drct);
+	// if (t2 >= EPS)
+	// 	return (*t = t2, 1);
+	// if (t1 >= EPS)
+	// 	return (*t = t1, 1);
 	return (0);
 }
 
@@ -79,9 +95,22 @@ int	check_cyl_intersection(t_cylender *cy, t_ray *ray, double *t)
 		cy->nrml_vctr);
 	d.z = dot_prdct(ray->drct, cy->nrml_vctr) * d.z + dot_prdct(v,
 		cy->nrml_vctr);
-	if (d.y >= EPS && d.y <= cy->hgt)
+	if (d.y > EPS && d.y < cy->hgt)
 		return (*t = (-s.y - sqrt(d.x)) / (2 * s.x), 1);
-	if (d.z >= EPS && d.z <= cy->hgt)
+	else if (d.z > EPS && d.z < cy->hgt)
 		return (*t = (-s.y + sqrt(d.x)) / (2 * s.x), 1);
 	return (0);
+}
+
+t_vctr  get_nrm_att(t_object *obj, t_vctr pt)
+{
+    t_vctr  nrm;
+
+    if (obj->type == SPHERE)
+        nrm = unit_vctr(sub_vctr(((t_sphere *)obj->objct)->crd, pt));
+    if (obj->type == PLANE)
+        nrm = unit_vctr(((t_plane *)obj->objct)->nrml_vctr);
+    if (obj->type == CYLENDER)
+        nrm = unit_vctr(cros_prdct(sub_vctr(((t_cylender *)obj->objct)->crd, pt), ((t_cylender *)obj->objct)->nrml_vctr));
+    return (nrm);
 }

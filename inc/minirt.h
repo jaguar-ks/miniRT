@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/07 02:41:22 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/08 03:38:08 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,7 @@ int					check_sph_intersection(t_sphere *sp, t_ray *ray, double *t);
 int					check_pln_intersection(t_plane *sp, t_ray *ray, double *t);
 int					check_cyl_intersection(t_cylender *cy, t_ray *ray,
 						double *t);
+t_vctr              get_nrm_att(t_object *obj, t_vctr pt);
 /*********************************************/
 /*******************|drawing|********************/
 void				render(t_rt *rt);
@@ -231,7 +232,11 @@ int					find_pix_color(t_rt *rt, t_ray *ray);
 void				init_img(t_mlx_tools *mlx);
 int                 no_hit(t_abt_lt *am);
 int                 shadow(t_abt_lt *am, t_object *obj);
-int                 light_color(t_abt_lt *am, t_light *lg, t_object *obj, t_ray *ray);
+int                 light_color(t_abt_lt *am, t_light *lg, t_object *obj, t_ray *ray, t_ray *r);
+int	                is_a_hit(void *obj, t_ObjectType type, t_ray *ray, double *t);
+t_rgb               add_clr(t_rgb cl1, t_rgb cl2, double r);
+t_rgb               visible(t_ray *r, t_vctr nrm, t_rgb obj, t_rt *rt);
+int                 blind(t_ray *r, t_object *obj, t_crd l);
 /************************************************/
 
 #endif

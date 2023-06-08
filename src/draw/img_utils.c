@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:09:54 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/07 01:17:33 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:44:18 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ int	encode_rgb(t_rgb *cl)
         cl->g = 255;
     if (cl->b > 255)
         cl->b = 255;
+    if (cl->r < 0)
+        cl->r = 0;
+    if (cl->g < 0)
+        cl->g = 0;
+    if (cl->b < 0)
+        cl->b = 0;
 	return (cl->r << 16 | cl->g << 8 | cl->b);
 }
 
