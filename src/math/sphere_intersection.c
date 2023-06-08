@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:36:28 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/08 05:25:39 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/08 06:02:57 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,21 @@ int	check_cyl_intersection(t_cylender *cy, t_ray *ray, double *t)
 	return (0);
 }
 
-t_vctr  get_nrm_att(t_object *obj, t_vctr pt)
+t_vctr  get_nrm_att(t_object *obj, t_ray *r, t_ray *p, double t)
 {
     t_vctr  nrm;
+    t_vctr  oc;
+    double  s;
 
     if (obj->type == SPHERE)
-        nrm = unit_vctr(sub_vctr(((t_sphere *)obj->objct)->crd, pt));
+        nrm = unit_vctr(sub_vctr(r->org, ((t_sphere *)obj->objct)->crd));
     if (obj->type == PLANE)
         nrm = unit_vctr(((t_plane *)obj->objct)->nrml_vctr);
     if (obj->type == CYLENDER)
-        nrm = unit_vctr(cros_prdct(sub_vctr(((t_cylender *)obj->objct)->crd, pt), ((t_cylender *)obj->objct)->nrml_vctr));
+    {
+        oc = unit_vctr(((t_cylender *)obj->objct)->nrml_vctr);
+        s = dot_prdct(p->drct, vctr_scl(oc, t)) + dot_prdct(sub_vctr(p->org, ((t_cylender *)obj->objct)->crd), oc);
+        nrm = unit_vctr(sub_vctr(sub_vctr(r->org, ((t_cylender *)obj->objct)->crd), vctr_scl(oc, s)));
+    }   
     return (nrm);
 }

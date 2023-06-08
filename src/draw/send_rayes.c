@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/08 05:37:18 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/08 06:06:01 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	pix_color(t_rt *rt, t_object *obj, t_ray *ray, double t)
     t_hit_point hp;
 
     hp.r.org = add_vctr(ray->org, vctr_scl(ray->drct, t));
-    hp.nrm = get_nrm_att(obj, hp.r.org);
+    hp.nrm = get_nrm_att(obj, &hp.r, ray, t);
     if (dot_prdct(hp.nrm, ray->drct) > 0)
         hp.nrm = vctr_scl(hp.nrm, -1);
     hp.r.drct = unit_vctr(sub_vctr(rt->lt->crd, hp.r.org));
