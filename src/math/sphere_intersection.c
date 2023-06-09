@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:36:28 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/08 06:02:57 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/09 00:44:46 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,16 @@ int	check_pln_intersection(t_plane *pl, t_ray *ray, double *t)
 	double	b;
 	t_vctr	v;
 
+    // if (dot_prdct(ray->drct, pl->nrml_vctr) >= 0)
+    //     pl->nrml_vctr = vctr_scl(pl->nrml_vctr, -1);
 	v = sub_vctr(ray->org, pl->crd);
     b = dot_prdct(ray->drct, unit_vctr(pl->nrml_vctr));
     if (b != 0)
     {
-        t1 = (dot_prdct(v, unit_vctr(pl->nrml_vctr)) * -1) / b;
-        if (t1 < EPS)
-            return (0);
-        return (*t = t1, 1);
+        t1 = (dot_prdct(unit_vctr(pl->nrml_vctr), v) * -1) / b;
+        if (t1 >= EPS)
+            return (*t = t1, 1);
+        return (0);
     }
     // cpy = vctr_scl(pl->nrml_vctr, -1);
 	// t1 = (dot_prdct(sub_vctr(pl->crd, ray->org), pl->nrml_vctr))
@@ -84,11 +86,11 @@ int	check_cyl_intersection(t_cylender *cy, t_ray *ray, double *t)
 			* dot_prdct(v, cy->nrml_vctr)));
 	s.z = dot_prdct(v, v) - pow(dot_prdct(v, cy->nrml_vctr), 2) - pow(cy->dmt
 		/ 2, 2);
-	d.x = pow(s.y, 2) - 4 * (s.x * s.z);
+	d.x = pow(s.y, 2) - (4 * s.x * s.z);
 	if (d.x < EPS)
 		return (0);
-	d.y = -s.y - sqrt(d.x) / 2 * s.x;
-	d.z = -s.y + sqrt(d.x) / 2 * s.x;
+	d.y = (-s.y - sqrt(d.x)) / (2 * s.x);
+	d.z = (-s.y + sqrt(d.x)) / (2 * s.x);
 	if (d.z < EPS)
 		return (0);
 	d.y = dot_prdct(ray->drct, cy->nrml_vctr) * d.y + dot_prdct(v,
@@ -111,7 +113,11 @@ t_vctr  get_nrm_att(t_object *obj, t_ray *r, t_ray *p, double t)
     if (obj->type == SPHERE)
         nrm = unit_vctr(sub_vctr(r->org, ((t_sphere *)obj->objct)->crd));
     if (obj->type == PLANE)
+    {
         nrm = unit_vctr(((t_plane *)obj->objct)->nrml_vctr);
+        if (dot_prdct(nrm, p->drct) >= EPS)
+            nrm = vctr_scl(nrm, -1);
+    }
     if (obj->type == CYLENDER)
     {
         oc = unit_vctr(((t_cylender *)obj->objct)->nrml_vctr);

@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:28:34 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/08 06:10:37 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/09 00:58:02 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int blind(t_ray *r, t_object *obj, t_crd l)
 {
     t_object    *tmp;
     t_object    *hld;
+    t_vctr      nrm;
+    t_ray       tp;
     double      t;
     double      cls;
 
@@ -96,13 +98,18 @@ int blind(t_ray *r, t_object *obj, t_crd l)
         {
             cls = t;
             hld = tmp;
+            tp.org = add_vctr(r->org, vctr_scl(r->drct, t));
+            nrm = get_nrm_att(hld, &tp, r, t);
         }
         tmp = tmp->next;
     }
+    if (hld && dot_prdct(nrm, r->drct) < EPS)
+    {
+        if (vctr_len(sub_vctr(tp.org, r->org)) < vctr_len(sub_vctr(l, r->org)))
+            return (1);
+    }
     // if(hld && (hld->type == PLANE))
     //     return(0);
-    if (hld && (vctr_len(add_vctr(r->org, vctr_scl(r->drct, t))) < vctr_len(sub_vctr(l, r->org))))
-        return (1);
     return (0);
 }
 
