@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 20:15:03 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:56:06 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void	get_vec_cy(char **ptr, t_cylender *rt)
 	}
 	else
 	{
-		rt->nrml_vctr.x = ft_atof(ptr[0]);
-		rt->nrml_vctr.y = ft_atof(ptr[1]);
-		rt->nrml_vctr.z = ft_atof(ptr[2]);
+		rt->nrm.x = ft_atof(ptr[0]);
+		rt->nrm.y = ft_atof(ptr[1]);
+		rt->nrm.z = ft_atof(ptr[2]);
 	}
 }
 void	ft_cy_vec(char *string, t_cylender *rt)

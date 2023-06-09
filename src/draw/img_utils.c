@@ -14,18 +14,18 @@
 
 int	encode_rgb(t_rgb *cl)
 {
-    if (cl->r > 255)
-        cl->r = 255;
-    if (cl->g > 255)
-        cl->g = 255;
-    if (cl->b > 255)
-        cl->b = 255;
-    if (cl->r < 0)
-        cl->r = 0;
-    if (cl->g < 0)
-        cl->g = 0;
-    if (cl->b < 0)
-        cl->b = 0;
+	if (cl->r > 255)
+		cl->r = 255;
+	if (cl->g > 255)
+		cl->g = 255;
+	if (cl->b > 255)
+		cl->b = 255;
+	if (cl->r < 0)
+		cl->r = 0;
+	if (cl->g < 0)
+		cl->g = 0;
+	if (cl->b < 0)
+		cl->b = 0;
 	return (cl->r << 16 | cl->g << 8 | cl->b);
 }
 

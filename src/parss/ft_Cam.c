@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 21:34:45 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 16:57:59 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:56:06 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	ft_Cam_Vector(char *string, t_rt *rt)
 		}
 		else
 		{
-			rt->cam->nrml_vctr.x = ft_atof(ptr[0]);
-			rt->cam->nrml_vctr.y = ft_atof(ptr[1]);
-			rt->cam->nrml_vctr.z = ft_atof(ptr[2]);
-			if (ft_rangeCheck(&(rt->cam->nrml_vctr)))
+			rt->cam->nrm.x = ft_atof(ptr[0]);
+			rt->cam->nrm.y = ft_atof(ptr[1]);
+			rt->cam->nrm.z = ft_atof(ptr[2]);
+			if (ft_rangeCheck(&(rt->cam->nrm)))
 			{
 				ft_printf("Error: Invalid camera vectors range sould be btw [-1,1] for each x,y,z\n",
 					1);

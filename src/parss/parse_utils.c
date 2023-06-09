@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:29:23 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:56:06 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,9 +153,9 @@ void	printf_tab(t_rt *rt)
 	printf("   -y: %0.f\n", rt->cam->crd.y);
 	printf("   -z: %0.f\n", rt->cam->crd.z);
 	printf("-vector:\n");
-	printf("   -x: %f\n", rt->cam->nrml_vctr.x);
-	printf("   -y: %f\n", rt->cam->nrml_vctr.y);
-	printf("   -z: %f\n", rt->cam->nrml_vctr.z);
+	printf("   -x: %f\n", rt->cam->nrm.x);
+	printf("   -y: %f\n", rt->cam->nrm.y);
+	printf("   -z: %f\n", rt->cam->nrm.z);
 	printf("/*     LIGHT   */\n");
 	printf("-RGB:\n");
 	printf("   -R: %d\n", rt->lt->clr.r);

@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/05 22:19:40 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:56:06 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_scene(t_scn **scn, t_rt *rt)
 		(*scn)->v_agl = dgr_to_rd(rt->cam->fov);
 		(*scn)->wg = tan((*scn)->v_agl / 2);
 		(*scn)->hg = (*scn)->wg * (*scn)->aspct_rt;
-		(*scn)->frwrd = rt->cam->nrml_vctr;
+		(*scn)->frwrd = rt->cam->nrm;
 		(*scn)->rght = unit_vctr(find_right_vctr((*scn)->frwrd));
 		(*scn)->up = unit_vctr(cros_prdct((*scn)->rght, (*scn)->frwrd));
 	}
@@ -57,7 +57,7 @@ void	init_img(t_mlx_tools *mlx)
 	}
 	mlx->img->mlx_img = mlx_new_image(mlx->mlx, HIGHT, WIGHT);
 	mlx->img->addr = mlx_get_data_addr(mlx->img->mlx_img, &mlx->img->bpp,
-		&mlx->img->line_len, &mlx->img->endian);
+			&mlx->img->line_len, &mlx->img->endian);
 }
 
 void	init_mlx(t_mlx_tools *mlx)
