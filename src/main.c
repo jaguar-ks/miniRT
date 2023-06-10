@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/29 14:06:39 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:06:41 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,11 @@ char	**read_file(char *fl)
 {
 	char	*r;
 	char	**sp;
+	int     fd;
 
-	// int     fd;
 	r = NULL;
-	r = read_all_lines(fl);
+    fd = open(fl, (O_RDONLY), 0777);
+	r = gnl(fd);
 	sp = ft_split(r, '\n');
 	free(r);
 	return (sp);
@@ -122,12 +123,12 @@ void	_miniRT(char *fl)
 		exit(1);
 	}
 	init_rt(&rt);
-	// print_objects(&rt);
+	deallocate(rt.fl);
 	render(&rt);
+	// print_objects(&rt);
 	// free(rt.al);
 	// free(rt.cam);
 	// free(rt.lt);
-	deallocate(rt.fl);
 	// free(rt.pl);
 	// for (int i = 0; i < mtx_len(rt.fl); i++)
 	// 	printf("-> %s\n", rt.fl[i]);
@@ -136,8 +137,13 @@ void	_miniRT(char *fl)
 //     system("leaks a.out");
 // }
 
+void hh(){
+    system("leaks miniRT");
+}
+
 int	main(int ac, char **av)
 {
+    atexit(hh);
 	if (ac == 2)
 		_miniRT(av[1]);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:10:03 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/28 20:36:41 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:09:22 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*gnl(int fd)
 	int			i;
 	static char	*r;
 	char		*bf;
-	char		*ln;
+	// char		*ln;
 
 	i = 1;
 	while (i)
@@ -66,5 +66,5 @@ char	*gnl(int fd)
 		}
 		r = ft_strjoin(r, bf);
 	}
-	return ((ln = take_line(r)), (r = take_rest(r)), ln);
+	return (r);
 }
