@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+         #
+#    By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 15:07:02 by faksouss          #+#    #+#              #
-#    Updated: 2023/05/31 13:23:01 by faksouss         ###   ########.fr        #
+#    Updated: 2023/06/06 03:01:52 by nbouljih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = miniRT
+NAME = minirt
 
 CFLAGS = -Wall -Wextra -Werror -Ofast
 
@@ -36,10 +36,10 @@ SRC = src/main.c\
 		src/parss/list_utils.c\
 		src/parss/my_utils.c\
 		src/parss/parse.c\
+		src/parss/read.c\
 		src/parss/parse2.c\
 		src/parss/parse_utils.c\
 		src/parss/pl_ut.c\
-		src/parss/pt.c\
 		get_next_line/get_next_line.c\
 		get_next_line/get_next_line_utils.c
 
@@ -75,7 +75,7 @@ clean :
 	$(RM) $(OBJDIR)
 
 fclean : clean
-	@printf "\r\033[0;33mYOU DELETED MY miniRT 😱 YOU !*#^&# 😡🤬\033[0m\n"
+	@printf "\r\033[0;33mYOU DELETED MY minirt 😱 YOU !*#^&# 😡🤬\033[0m\n"
 	@make -C libtool fclean
 	$(RM) $(NAME)
 

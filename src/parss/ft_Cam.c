@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_Cam.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 21:34:45 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 16:57:59 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:10:26 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int ft_rangeCheck(t_crd *vec)
 void ft_Cam_Vector(char *string, t_rt *rt)
 {
     char **ptr;
-
     ptr = ft_split(string, ',');
     if (ptr != NULL && mtx_len(ptr) == 3)
     {

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 13:28:01 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:09:09 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef minirt_H
+# define minirt_H
 
 #include"../libtool/inc/libft.h"
 #include "../get_next_line/get_next_line.h"
@@ -144,7 +144,12 @@ typedef struct s_rt
     t_object    *object;
 }   t_rt;
 
-typedef struct s_line{
+typedef struct s_er
+{
+    bool    stat;
+}
+typedef struct s_line
+{
     const char *prefix;
     void (*function)(char *, t_rt *);
     int count;
@@ -157,11 +162,25 @@ typedef struct s_count
     int cy;
 }t_count;
 
+typedef struct s_read
+{
+    char	*line;
+	char	*all_ln;
+	size_t	total_si;
+	int		fd;
+	size_t	line_s;
+	char	*temp;
+}t_read;
+
 char    *SearchString(char **array, const char *needle);
-int     ft_Double_strlen(char **array);
+// int     ft_Double_strlen(char **array);
+char	*read_all_lines(const char *filename);
+void	r_2(t_read *r_data);
+void	er_rd_lines(t_read r_data);
+int	    check_and_open_file(char *fl);
 int     countWords(char* str);
 void    init_rt(t_rt *rt);
-void    ft_Alight(char *line, t_rt *rt);
+void    ft_alight(char *line, t_rt *rt);
 double  ft_atof(const char *str);
 void    ft_putstr(char *str);
 void    ft_Cam(char *string, t_rt *rt);
@@ -172,9 +191,9 @@ long	M_ft_atoi(const char *str);
 int     count_negative(const char *str);
 char    **ft_split2(char *str);
 void    *ft_realloc(void* ptr, size_t new_size);
-void     ft_pl(t_rt *rt, int count);
+void    ft_pl(t_rt *rt, int count);
 void    add_Obj(t_object **lst, void* object, int type);
-char    *extractElements(char** str, const char* elementPrefix, int h_m_elements);
+char    *extract_elem(char** str, const char* elementPrefix, int h_m_elements);
 int     ft_checkWords_4(char **array);
 void    ft_pl_Cordination(char *string, t_plane *rt);
 void    parse_obj(t_rt *rt);
@@ -189,6 +208,8 @@ void    ft_cy(t_rt *rt, int count);
 void    ft_cy_rgb(char *rgb_string, t_cylender *cy);
 void    ft_cy_vec(char *string, t_cylender *rt);
 void    ft_cy_cord(char *string, t_cylender *rt);
+char    *trim(char *str);
+void	ft_leaks(t_rt rt);
 /*******************|MATH|********************/
 t_vctr  add_vctr(t_vctr v1, t_vctr v2);
 t_vctr  mltp_vctr(t_vctr v1, t_vctr v2);

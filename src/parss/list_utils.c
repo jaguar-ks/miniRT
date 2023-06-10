@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:30 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:41:41 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:06:16 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,15 @@ void print_objects(t_rt *rt)
             printf("Sphere dmt: %f\n", sphere->dmt);
         }
         if (obj->type == CYLENDER)
+        {
+            t_cylender *cylender = (t_cylender *)obj->objct;
             printf("Object Type: Cylender\n");
-
-        // Add more else if conditions for other object types
-
+            printf("Cylender Crd: (%f, %f, %f)\n", cylender->crd.x, cylender->crd.y, cylender->crd.z);
+            printf("Cylender Vector: (%f, %f, %f)\n", cylender->nrml_vctr.x, cylender->nrml_vctr.y, cylender->nrml_vctr.z);
+            printf("Cylender Diameter: (%f)", cylender->dmt);
+            printf("Cylender Height: (%f)\n", cylender->hgt);
+            printf("Cylender Clolor: RGB(%d, %d, %d)\n", cylender->clr.r, cylender->clr.g, cylender->clr.b);
+        }
         printf("\n");
         objCount++;
     }

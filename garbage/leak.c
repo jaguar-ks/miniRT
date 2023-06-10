@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse2.c                                           :+:      :+:    :+:   */
+/*   leak.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 16:16:05 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/08 14:30:14 by nbouljih         ###   ########.fr       */
+/*   Created: 2023/06/04 21:08:36 by nbouljih          #+#    #+#             */
+/*   Updated: 2023/06/08 08:19:57 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+// init_rt(&rt);
+	// print_objects(&rt);
+	// render(&rt);
+	// free(rt.al);
+	// free(rt.cam);
+	// free(rt.lt);
+	// free(rt.pl);
 
-void	parse_obj(t_rt *rt)
-{
-	t_count	x;
-
-	x.cy = 0;
-	x.pl = 0;
-	x.ps = 0;
-	len_elem(rt->fl, &x.pl, &x.ps, &x.cy);
-	rt->object = NULL;
-	ft_pl(rt, x.pl);
-	// ft_sp(rt, x.ps);
-	// ft_cy(rt, x.cy);
-	// print_objects(rt);
-}

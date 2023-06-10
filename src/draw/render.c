@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/05/31 14:39:45 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:06:16 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void    init_img(t_mlx_tools *mlx)
 void    init_mlx(t_mlx_tools *mlx)
 {
     mlx->mlx = mlx_init();
-    mlx->win = mlx_new_window(mlx->mlx, HIGHT, WIGHT, "MINIRT");
+    mlx->win = mlx_new_window(mlx->mlx, HIGHT, WIGHT, "minirt");
     init_img(mlx);
 }
 

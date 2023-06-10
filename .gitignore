@@ -52,4 +52,4 @@ libtool/obj/ft_toupper.o
 libtool/obj/get_next_line.o
 libtool/obj/print_functions.o
 libtool/libft.a
-miniRT
+minirt

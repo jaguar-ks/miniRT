@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sp.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:50:18 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 00:45:29 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 void    put_sp(t_sphere *sp, char **ptr)
 {
     ft_sp_cord(ptr[1], sp);
-    sp->dmt = ft_atof(ptr[2]);
+    if (ft_atof(ptr[2]) != 1337)
+        sp->dmt = ft_atof(ptr[2]);
+    else
+    {
+        ft_printf("Error: dmt in sp\n", 2);
+        exit(EXIT_FAILURE);
+    }
     ft_sp_rgb(ptr[3], sp);
     deallocate(ptr);
 }
@@ -53,7 +59,7 @@ void    ft_sp(t_rt *rt, int count)
 {
     char    *sp_elm;
     char    **array;    
-    sp_elm =  extractElements(rt->fl, "sp ", count);
+    sp_elm =  extract_elem(rt->fl, "sp", count);
     array = ft_split(sp_elm, '\n');
     if(!array || !ft_checkWords_4(array))
     {

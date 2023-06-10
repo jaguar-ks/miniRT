@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:29:23 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:10:38 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
-
-int     ft_Double_strlen(char **array)
-{
-    int i;
-    
-    i = 0;
-    while(array[i])
-        i++;
-    return(i);
-}
 
 char *SearchString(char **array, const char *needle)
 {
@@ -28,7 +18,7 @@ char *SearchString(char **array, const char *needle)
     int     numStrings;
     
     i = 0;
-    numStrings = ft_Double_strlen(array);
+    numStrings = mtx_len(array);
     while(i < numStrings)
     {
         if (!ft_strncmp(array[i], needle, ft_strlen(needle)))
@@ -75,12 +65,31 @@ void	ft_valid(char *str)
         }
     }
 }
+
+int countDigits(int num) {
+    int count = 0;
+    
+    // Handle the case of zero separately
+    if (num == 0) {
+        return 1;
+    }
+    
+    // Count the digits by continuously dividing by 10
+    while (num != 0) {
+        num /= 10;
+        count++;
+    }
+    
+    return count;
+}
+
 double ft_atof(const char* str) 
 {
     double  result = 0.0;
     double  sign = 1.0;
     int     decimalFound = 0;
     double  decimalPlace = 0.1;
+    
     while (ft_isspace(*str))
         str++;
     if (count_negative(str) > 1)
@@ -116,8 +125,8 @@ double ft_atof(const char* str)
     }
     if (result > DBL_MAX || result < -DBL_MAX) 
     {
-        ft_printf("Error: floating-point overflow ft_atof\n", 1);
-        return(1337);
+        printf("Error: floating-point overflow ft_atof\n");
+        exit(1337);
     }
     return result * sign;
 }

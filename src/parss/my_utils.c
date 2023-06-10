@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:37:12 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 00:46:27 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,18 @@ static int count_words(char *str)
 
 static char *extract_word(char *str)
 {
-    int word_len = 0;
-
+    int     word_len;
+    char    *word;
+    word_len = 0;
     while (*str && !is_delimiter(*str))
     {
         word_len++;
         str++;
     }
-
-    char *word = malloc((word_len + 1) * sizeof(char));
+    word = malloc((word_len + 1) * sizeof(char));
     strncpy(word, str - word_len, word_len);//implement
     word[word_len] = '\0';
-
-    return word;
+    return (word);
 }
 
 char **ft_split2(char *str)
@@ -85,78 +84,69 @@ char **ft_split2(char *str)
     return words;
 }
 
-void    *ft_realloc(void* ptr, size_t new_size) 
+char* extract_elem(char** str, const char* elementPrefix, int h_m_elements) 
 {
-    size_t  *old_size_ptr;
-    size_t  old_size;
-    size_t  copy_size;
-    void    *new_ptr;
+    int count;
+    char    **extract_el; 
+    char    *ptr;
+    size_t  extract_sz;
+    char    *extract_str;
+    int     i;
     
-    if (new_size == 0)
+    extract_el = malloc((h_m_elements + 1) * sizeof(char*));
+    if (extract_el == NULL) 
     {
-        free(ptr);
+        ft_printf("Error: Allocation problem from extract_elem\n", 2);
         return NULL;
     }
-    if (ptr == NULL) 
-        return malloc(new_size);
-    new_ptr = malloc(new_size);
-    if (new_ptr == NULL)
-        return NULL;  
-    old_size_ptr = (size_t*)ptr - 1;
-    old_size = *old_size_ptr;
-    if (new_size < old_size)
-        copy_size = new_size;
-    else
-        copy_size = old_size;
-    ft_memcpy(new_ptr, ptr, copy_size);
-    free(ptr);
-    return (new_ptr);
-}
-
-char* extractElements(char** str, const char* elementPrefix, int h_m_elements) {
-    int count ;
-
-    // Allocate memory for the extracted elements
-    char** extractedElements = malloc((h_m_elements + 1) * sizeof(char*));
-    if (extractedElements == NULL) 
-    {
-       ft_printf("Error: Allocation problem from extractElements\n", 1);
-        return NULL;
-    }
-    // Extract the matching elements
     count = 0;
-    for (int i = 0; str[i] != NULL; i++) {
-        if (!ft_strncmp(str[i], elementPrefix, strlen(elementPrefix)))
+    i = 0;
+    while(str[i])
+    {
+        ptr = trim(str[i]);
+        while (*ptr && ft_isspace(*ptr)) 
+            ptr++;
+        if (!ft_strncmp(ptr, elementPrefix, ft_strlen(elementPrefix))) 
         {
-            extractedElements[count] = ft_strdup(str[i]);
+            extract_el[count] = ft_strdup(str[i]);
             count++;
         }
+        i++;
     }
-    extractedElements[count] = NULL;  // Null-terminate the array
-    // Concatenate the extracted elements into a single string
-    size_t extractedSize = 0;
+    // for (int i = 0; str[i] != NULL; i++) 
+    // {
+    //     ptr = trim(str[i]);
+    //     while (*ptr && ft_isspace(*ptr)) 
+    //         ptr++;
+    //     if (!ft_strncmp(ptr, elementPrefix, ft_strlen(elementPrefix))) 
+    //     {
+    //         extract_el[count] = ft_strdup(str[i]);
+    //         count++;
+    //     }
+    // }
+    extract_el[count] = NULL; 
+    extract_sz = 0;
     for (int i = 0; i < count; i++) {
-        extractedSize += ft_strlen(extractedElements[i]) + 1;  // Account for newline character
-    } // 
-    char* extractedString = malloc(extractedSize);
-    if (extractedString == NULL) {
-        // Error handling for memory allocation failure
-        free(extractedElements);
+        extract_sz += ft_strlen(extract_el[i]) + 1;  
+    } 
+    extract_str = malloc(extract_sz);
+    if (extract_str == NULL) 
+    {
+        free(extract_el);
         return NULL;
     }
-    extractedString[0] = '\0';  // Initialize the string as empty
-    for (int i = 0; i < count; i++) {
-        strcat(extractedString, extractedElements[i]);
-        strcat(extractedString, "\n");
+    extract_str[0] = '\0';  
+    for (int i = 0; i < count; i++) 
+    {
+        strcat(extract_str, extract_el[i]); //strcat
+        strcat(extract_str, "\n");
     }
-
-    // Free the memory allocated for the array of pointers
-    for (int i = 0; i < count; i++) {
-        free(extractedElements[i]);
+    for (int i = 0; i < count; i++) 
+    {
+        free(extract_el[i]);
     }
-    free(extractedElements);
-
-    return extractedString;
+    free(extract_el);
+    return (extract_str);
 }
 
 int ft_checkWords_4(char **array)
