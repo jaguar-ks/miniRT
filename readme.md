@@ -1,4 +1,4 @@
-# *MINIRT* 
+# *minirt* 
 Read the File:
 
 ~>Create a function to read the scene description file. This function should take the file path as input and return the contents of the file as a string or a list of lines.

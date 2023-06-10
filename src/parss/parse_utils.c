@@ -3,39 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:29:23 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/09 20:56:06 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:22:18 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-int	ft_Double_strlen(char **array)
+char *SearchString(char **array, const char *needle)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
-		i++;
-	return (i);
-}
-
-char	*SearchString(char **array, const char *needle)
-{
-	int	i;
-	int	numStrings;
-
-	i = 0;
-	numStrings = ft_Double_strlen(array);
-	while (i < numStrings)
-	{
-		if (!ft_strncmp(array[i], needle, ft_strlen(needle)))
-			return (array[i]);
-		i++;
-	}
-	return (NULL);
+    int i;
+    int     numStrings;
+    
+    i = 0;
+    numStrings = mtx_len(array);
+    while(i < numStrings)
+    {
+        if (!ft_strncmp(array[i], needle, ft_strlen(needle)))
+            return(array[i]);
+        i++;
+    }
+    return(NULL);
 }
 
 int	countWords(char *str)
@@ -75,56 +65,70 @@ void	ft_valid(char *str)
 		}
 	}
 }
-double	ft_atof(const char *str)
-{
-	double	result;
-	double	sign;
-	int		decimalFound;
-	double	decimalPlace;
 
-	result = 0.0;
-	sign = 1.0;
-	decimalFound = 0;
-	decimalPlace = 0.1;
-	while (ft_isspace(*str))
-		str++;
-	if (count_negative(str) > 1)
-	{
-		ft_printf("Error: invalid input in ft_atof from '%s'\n", 1, str);
-		exit(1337);
-	}
-	if (*str == '-')
-	{
-		sign = -1.0;
-		str++;
-	}
-	while (*str != '\0')
-	{
-		if (ft_isdigit(*str))
-		{
-			if (!decimalFound)
-				result = result * 10.0 + (*str - '0');
-			else
-			{
-				result = result + (*str - '0') * decimalPlace;
-				decimalPlace *= 0.1;
-			}
-		}
-		else if (*str == '.')
-			decimalFound = 1;
-		else
-		{
-			printf("Error ft_atof: wrong input str: '%s'\n", str);
-			return (1337);
-		}
-		str++;
-	}
-	if (result > DBL_MAX || result < -DBL_MAX)
-	{
-		ft_printf("Error: floating-point overflow ft_atof\n", 1);
-		return (1337);
-	}
-	return (result * sign);
+int countDigits(int num) {
+    int count = 0;
+    
+    // Handle the case of zero separately
+    if (num == 0) {
+        return 1;
+    }
+    
+    // Count the digits by continuously dividing by 10
+    while (num != 0) {
+        num /= 10;
+        count++;
+    }
+    
+    return count;
+}
+
+double ft_atof(const char* str) 
+{
+    double  result = 0.0;
+    double  sign = 1.0;
+    int     decimalFound = 0;
+    double  decimalPlace = 0.1;
+    
+    while (ft_isspace(*str))
+        str++;
+    if (count_negative(str) > 1)
+    {
+        ft_printf("Error: invalid input in ft_atof from '%s'\n", 1, str);
+        exit(1337);
+    }
+    if (*str == '-')
+    { 
+        sign = -1.0;
+        str++;
+    }
+    while (*str != '\0') 
+    {
+        if (ft_isdigit(*str)) 
+        {
+            if (!decimalFound) 
+                result = result * 10.0 + (*str - '0');
+            else
+            { 
+                result = result + (*str - '0') * decimalPlace;
+                decimalPlace *= 0.1;
+            }
+        } 
+        else if (*str == '.')
+            decimalFound = 1;
+        else 
+        {
+            printf("Error ft_atof: wrong input str: '%s'\n", str);
+            return(1337);
+        }
+        str++;
+    }
+    if (result > DBL_MAX || result < -DBL_MAX) 
+    {
+        printf("Error: floating-point overflow ft_atof\n");
+        exit(1337);
+    }
+    return result * sign;
 }
 
 void	ft_putstr(char *str)

@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:50:18 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 03:59:13 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 void	put_sp(t_sphere *sp, char **ptr)
 {
-	ft_sp_cord(ptr[1], sp);
-	sp->dmt = ft_atof(ptr[2]);
-	ft_sp_rgb(ptr[3], sp);
-	deallocate(ptr);
+    ft_sp_cord(ptr[1], sp);
+    if (ft_atof(ptr[2]) != 1337)
+        sp->dmt = ft_atof(ptr[2]);
+    else
+    {
+        ft_printf("Error: dmt in sp\n", 2);
+        exit(EXIT_FAILURE);
+    }
+    ft_sp_rgb(ptr[3], sp);
+    deallocate(ptr);
 }
 void	get_sp(char **array, t_rt *rt)
 {
@@ -47,19 +53,20 @@ void	get_sp(char **array, t_rt *rt)
 		}
 		i++;
 	}
+    deallocate(array);
 }
 void	ft_sp(t_rt *rt, int count)
 {
-	char	*sp_elm;
-	char	**array;
-
-	sp_elm = extractElements(rt->fl, "sp ", count);
-	array = ft_split(sp_elm, '\n');
-	if (!array || !ft_checkWords_4(array))
-	{
-		ft_printf("Error: Invalid array or words in sp \n", 2);
-		exit(EXIT_FAILURE);
-	}
-	else
-		get_sp(array, rt);
+    char    *sp_elm;
+    char    **array;    
+    sp_elm =  extract_elem(rt->fl, "sp ", count);
+    free(sp_elm);
+    array = ft_split(sp_elm, '\n');
+    if(array != NULL && ft_checkWords_4(array))
+        get_sp(array, rt);
+    else
+    {
+        ft_printf("Error: Invalid array or words in sp \n", 2);
+        exit(EXIT_FAILURE);
+    }
 }

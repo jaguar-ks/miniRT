@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:14:09 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 17:05:54 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 04:24:29 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,17 @@ void	ft_light(char *tmp, t_rt *rt)
 		ft_printf("Error: Failed to allocate memory for light\n", 1);
 		exit(EXIT_FAILURE);
 	}
-	ptr = ft_split2(tmp);
 	if (rt->lt != NULL)
 	{
+    	ptr = ft_split2(tmp);
+        if (mtx_len(ptr) != 4)
+            return (deallocate(ptr), ft_printf("Error : L\n", 2), exit(1));
 		ft_light_Coordination(ptr[1], rt);
-		if ((rt->lt->bright = ft_atof(ptr[2]) == EXIT_FAILURE))
+		if ((rt->lt->bright = ft_atof(ptr[2]) == 1337))
+        {
+            ft_printf("Error: check  brightness of the light\n", 2);
 			exit(1);
+        }
 		rt->lt->bright = ft_atof(ptr[2]);
 		if (rt->lt->bright < 0.0 || rt->lt->bright > 1.0)
 		{

@@ -6,13 +6,13 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/07 00:26:15 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 04:00:03 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-void	check_Alpha(char **string)
+void	check_alpha(char **string)
 {
 	int	i;
 	int	c_a;
@@ -40,11 +40,25 @@ void	check_Alpha(char **string)
 	}
 }
 
-void	get_Alpha(t_rt *rt)
+t_lines	init_lines(char *s, void func(char *, t_rt *), int i)
+{
+	t_lines	l;
+
+	l.prefix = s;
+	l.function = func;
+	l.count = i;
+	return (l);
+}
+
+void	get_alpha(t_rt *rt)
 {
 	char	*tmp;
 	size_t	i;
-	t_lines	lines[] = {{"A ", ft_Alight, 3}, {"C ", ft_Cam, 4}, {"L ", ft_light, 4}};
+	t_lines	lines[3];
+
+	lines[0] = init_lines("A ", ft_alight, 3);
+	lines[1] = init_lines("C ", ft_Cam, 4);
+	lines[2] = init_lines("L ", ft_light, 4);
 	i = 0;
 	while (i < sizeof(lines) / sizeof(lines[0]))
 	{
@@ -55,9 +69,7 @@ void	get_Alpha(t_rt *rt)
 			exit(1);
 		}
 		if (!(lines[i].count ^ countWords(tmp)))
-		{
 			lines[i].function(tmp, rt);
-		}
 		else
 		{
 			printf("Error: Invalid format for '%s' line\n", lines[i].prefix);
@@ -66,27 +78,67 @@ void	get_Alpha(t_rt *rt)
 		i++;
 	}
 }
-void	len_elem(char **string, int *pl, int *sp, int *cy)
+
+int	space(const char *string)
 {
 	int	i;
 
 	i = 0;
+	while (string[i] && ft_isspace(string[i]))
+		i++;
+	return (i);
+}
+
+char	*trim(char *str)
+{
+	char	*ptr;
+	int		i;
+	int		t;
+	int		j;
+
+	t = strlen(str);
+	i = space(str);
+	ptr = (char *)malloc(sizeof(char) * (t - i + 1));
+	j = 0;
+	while (str[i])
+	{
+		ptr[j] = str[i];
+		i++;
+		j++;
+	}
+	ptr[j] = '\0';
+	return (ptr);
+}
+
+void	len_elem(char **string, int *pl, int *sp, int *cy)
+{
+	char	*ptr;
+	int		i;
+
+	i = 0;
 	while (string[i])
 	{
-		if (!ft_strncmp(string[i], "pl ", ft_strlen("pl ")))
+		ptr = trim(string[i]);
+		if (!ft_strncmp(ptr, "pl ", strlen("pl ")))
 			(*pl)++;
-		else if (!ft_strncmp(string[i], "sp ", ft_strlen("sp ")))
+		else if (!ft_strncmp(ptr, "sp ", strlen("sp ")))
 			(*sp)++;
-		else if (!ft_strncmp(string[i], "cy ", ft_strlen("cy ")))
+		else if (!ft_strncmp(ptr, "cy ", strlen("cy ")))
 			(*cy)++;
+		else if (ptr[0] != 'A' && ptr[0] != 'C' && ptr[0] != 'L')
+		{
+			printf("Error: Unknown object type\n");
+			exit(EXIT_FAILURE);
+		}
 		i++;
+		free(ptr);
 	}
 }
+
 void	init_rt(t_rt *rt)
 {
-	// char    **tok;
-	check_Alpha(rt->fl);
-	get_Alpha(rt);
+	check_alpha(rt->fl);
+	get_alpha(rt);
 	// printf_tab(rt);
 	parse_obj(rt);
 }

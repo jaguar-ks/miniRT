@@ -6,13 +6,13 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/10 01:06:41 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 03:29:31 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	check_and_open_file(char *fl)
+int read_fl(char *fl)
 {
 	int	i;
 
@@ -43,50 +43,50 @@ char	*read_all_lines_wrapper(const char *filename)
 	return (all_lines);
 }
 
-char	*read_all_lines(const char *filename)
-{
-	char	*line;
-	char	*all_lines;
-	size_t	total_size;
-	int		fd;
-	size_t	line_size;
-	char	*temp;
+// char	*read_all_lines(const char *filename)
+// {
+// 	char	*line;
+// 	char	*all_lines;
+// 	size_t	total_size;
+// 	int		fd;
+// 	size_t	line_size;
+// 	char	*temp;
 
-	all_lines = NULL;
-	total_size = 0;
-	// ssize_t read_size;
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error: Opening the file");
-		exit(EXIT_FAILURE);
-	}
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		line_size = ft_strlen(line);
-		temp = malloc(total_size + line_size + 1);
-		if (temp == NULL)
-		{
-			perror("Error: Memory allocation failed");
-			free(all_lines);
-			free(line);
-			close(fd);
-			return (NULL);
-		}
-		if (all_lines != NULL)
-		{
-			ft_memcpy(temp, all_lines, total_size);
-			free(all_lines);
-		}
-		ft_memcpy(temp + total_size, line, line_size);
-		temp[total_size + line_size] = '\0';
-		all_lines = temp;
-		total_size += line_size;
-		free(line);
-	}
-	close(fd);
-	return (all_lines);
-}
+// 	all_lines = NULL;
+// 	total_size = 0;
+// 	// ssize_t read_size;
+// 	fd = open(filename, O_RDONLY);
+// 	if (fd == -1)
+// 	{
+// 		perror("Error: Opening the file");
+// 		exit(EXIT_FAILURE);
+// 	}
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		line_size = ft_strlen(line);
+// 		temp = malloc(total_size + line_size + 1);
+// 		if (temp == NULL)
+// 		{
+// 			perror("Error: Memory allocation failed");
+// 			free(all_lines);
+// 			free(line);
+// 			close(fd);
+// 			return (NULL);
+// 		}
+// 		if (all_lines != NULL)
+// 		{
+// 			ft_memcpy(temp, all_lines, total_size);
+// 			free(all_lines);
+// 		}
+// 		ft_memcpy(temp + total_size, line, line_size);
+// 		temp[total_size + line_size] = '\0';
+// 		all_lines = temp;
+// 		total_size += line_size;
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	return (all_lines);
+// }
 
 char	**read_file(char *fl)
 {
@@ -112,7 +112,7 @@ int	mtx_len(char **mx)
 	return (i);
 }
 
-void	_miniRT(char *fl)
+void	minirt(char *fl)
 {
 	t_rt	rt;
 
@@ -129,9 +129,6 @@ void	_miniRT(char *fl)
 	// free(rt.al);
 	// free(rt.cam);
 	// free(rt.lt);
-	// free(rt.pl);
-	// for (int i = 0; i < mtx_len(rt.fl); i++)
-	// 	printf("-> %s\n", rt.fl[i]);
 }
 // void detect_memory_leaks() {
 //     system("leaks a.out");
@@ -145,11 +142,10 @@ int	main(int ac, char **av)
 {
     atexit(hh);
 	if (ac == 2)
-		_miniRT(av[1]);
+		minirt(av[1]);
 	else
 	{
 		ft_printf("Error : Bad number of args\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	// detect_memory_leaks();
 }

@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:31:00 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/05/31 10:25:00 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 03:20:04 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,25 @@ void	ft_sp_cord(char *string, t_sphere *rt)
 {
 	char	**ptr;
 
-	ptr = ft_split(string, ',');
-	if (ptr == NULL || mtx_len(ptr) != 3)
-	{
-		ft_printf("Error: allocation comming form : [ft_pl_vec]\n", 2);
-		exit(1);
-	}
-	else
-	{
-		rt->crd.x = ft_atof(ptr[0]);
-		rt->crd.y = ft_atof(ptr[1]);
-		rt->crd.z = ft_atof(ptr[2]);
-		deallocate(ptr);
-	}
+    ptr = ft_split(string, ',');
+    if(ptr != NULL && mtx_len(ptr) == 3)
+    {
+        if (ft_atof(ptr[0]) != 1337 && ft_atof(ptr[1]) != 1337 && ft_atof(ptr[2]) != 1337)
+		{
+			rt->crd.x = ft_atof(ptr[0]);
+			rt->crd.y = ft_atof(ptr[1]);
+			rt->crd.z = ft_atof(ptr[2]);
+		}
+		else
+		{
+			ft_printf("Error: Invalid light coordinates\n", 1);
+			exit(EXIT_FAILURE);
+		}
+        deallocate(ptr);
+    }
+    else
+    {
+        ft_printf("Error: allocation comming form : [ft_pl_vec]\n", 2);
+        exit(1);
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 21:34:45 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/09 20:56:06 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 04:22:45 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,34 @@ int	ft_rangeCheck(t_crd *vec)
 
 void	ft_Cam_Vector(char *string, t_rt *rt)
 {
-	char	**ptr;
-
-	ptr = ft_split(string, ',');
-	if (ptr != NULL && mtx_len(ptr) == 3)
-	{
-		if ((ft_atof(ptr[0])) == 1337 || (ft_atof(ptr[1])) == 1337
-			|| (ft_atof(ptr[2])) == 1337)
-		{
-			printf("wtf\n");
-			exit(1);
-		}
-		else
-		{
-			rt->cam->nrm.x = ft_atof(ptr[0]);
-			rt->cam->nrm.y = ft_atof(ptr[1]);
-			rt->cam->nrm.z = ft_atof(ptr[2]);
-			if (ft_rangeCheck(&(rt->cam->nrm)))
-			{
-				ft_printf("Error: Invalid camera vectors range sould be btw [-1,1] for each x,y,z\n",
-					1);
-				exit(EXIT_FAILURE);
-			}
-			deallocate(ptr);
-		}
-	}
-	else
-	{
-		printf("Error: in camera's vector\n");
-		exit(EXIT_FAILURE); // Quit the program
-	}
+    char **ptr;
+    ptr = ft_split(string, ',');
+    if (ptr != NULL && mtx_len(ptr) == 3)
+    {
+        if ((ft_atof(ptr[0])) == 1337 || (ft_atof(ptr[1])) == 1337 ||
+                 (ft_atof(ptr[2])) == 1337)
+        {
+            ft_printf("Error: Check cam vector\n", 2);
+            exit(1);
+        }
+        else
+        {
+            rt->cam->nrm.x = ft_atof(ptr[0]);
+            rt->cam->nrm.y = ft_atof(ptr[1]);
+            rt->cam->nrm.z = ft_atof(ptr[2]);
+            if(ft_rangeCheck(&(rt->cam->nrm)))
+            {
+                ft_printf("Error: Invalid camera vectors range sould be btw [-1,1] for each x,y,z\n", 1);
+                exit(EXIT_FAILURE);
+            }
+            deallocate(ptr);
+        }
+    }
+    else
+    {
+        printf("Error: in camera's vector\n");
+        exit(EXIT_FAILURE); // Quit the program
+    }
 }
 
 void	ft_CAm_cordCheck(char **ptr, t_rt *rt)
@@ -94,7 +92,7 @@ void	ft_Cam(char *string, t_rt *rt)
 		printf("Error: Failed to allocate memory for camera\n");
 		exit(EXIT_FAILURE); // Quit the program
 	}
-	ptr = ft_split2(string);
+    ptr = ft_split2(string);
 	if (ptr != NULL && mtx_len(ptr) == 4)
 	{
 		ft_Cam_Coordination(ptr[1], rt);
@@ -104,6 +102,7 @@ void	ft_Cam(char *string, t_rt *rt)
 	}
 	else
 	{
+		deallocate(ptr);
 		printf("Error: Invalid camera parameters\n");
 		exit(EXIT_FAILURE); // Quit the program
 	}

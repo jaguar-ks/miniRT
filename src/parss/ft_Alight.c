@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:56:33 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/07 00:25:55 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/10 03:47:41 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,46 +57,12 @@ void	ft_rgb_al(char *string, t_rt *rt)
 		exit(EXIT_FAILURE);
 	}
 }
-// void     ft_Alight(char *line, t_rt *rt)
-// {
-//     int     ratio;
-//     char    **ptr;
 
-//     ptr = ft_split(line, ' ');
-//     rt->al = malloc(sizeof(t_abt_lt));
-//     if (rt->al == NULL)
-//     {
-//         ft_printf("Error: Failed to allocate memory for ambiant light\n", 1);
-//         exit(EXIT_FAILURE); // Quit the program
-//     }
-//     if(rt->al != NULL)
-//     {
-//         ratio = ft_atof(ptr[1]);
-//         if (ratio < 0.0 || ratio > 1.0)
-//         {
-//             ratio = EXIT_FAILURE;
-//             ft_printf("Error: ratio's range should be at [0.0,1.0]\n", 1);
-//             exit(1);
-//         }
-//         rt->al->brightness = ratio;
-//     //     if(rt->al->brightness == EXIT_FAILURE)
-//     //             exit(1);
-//     //  printf("hello??");
-//         ft_rgb_al(ptr[2], rt);
-//         deallocate(ptr);
-//     }
-//     else
-//     {
-//         ft_printf("Error: From parsing the  Ambiant light\n", 1);
-//         exit(EXIT_FAILURE);
-//     }
-// }
-void	ft_Alight(char *line, t_rt *rt)
+void	ft_alight(char *line, t_rt *rt)
 {
 	double	ratio;
 	char	**ptr;
 
-	ptr = ft_split2(line);
 	rt->al = malloc(sizeof(t_abt_lt));
 	if (rt->al == NULL)
 	{
@@ -105,6 +71,9 @@ void	ft_Alight(char *line, t_rt *rt)
 	}
 	if (rt->al != NULL)
 	{
+    	ptr = ft_split2(line);
+        if (mtx_len(ptr) != 3)
+            return (deallocate(ptr), ft_printf("Error : A\n", 2), exit(1));
 		ratio = ft_atof(ptr[1]);
 		if (ratio < 0.0 || ratio > 1.0)
 		{
