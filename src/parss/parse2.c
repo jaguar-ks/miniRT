@@ -6,7 +6,7 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:16:05 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/08 14:30:14 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:40:45 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	parse_obj(t_rt *rt)
 	len_elem(rt->fl, &x.pl, &x.ps, &x.cy);
 	rt->object = NULL;
 	ft_pl(rt, x.pl);
-	// ft_sp(rt, x.ps);
-	// ft_cy(rt, x.cy);
+	ft_sp(rt, x.ps);
+	ft_cy(rt, x.cy);
 	// print_objects(rt);
 }

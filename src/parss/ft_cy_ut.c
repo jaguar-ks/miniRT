@@ -6,7 +6,7 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 20:15:03 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/04 21:06:16 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:29:50 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ void	get_vec_cy(char **ptr, t_cylender *rt)
 	}
 	else
 	{
-		rt->nrml_vctr.x = ft_atof(ptr[0]);
-		rt->nrml_vctr.y = ft_atof(ptr[1]);
-		rt->nrml_vctr.z = ft_atof(ptr[2]);
+		rt->nrm.x = ft_atof(ptr[0]);
+		rt->nrm.y = ft_atof(ptr[1]);
+		rt->nrm.z = ft_atof(ptr[2]);
 	}
 }
 

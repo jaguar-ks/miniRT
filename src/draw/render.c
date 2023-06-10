@@ -6,61 +6,82 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/04 21:06:16 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:29:30 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../inc/minirt.h"
+#include "../../inc/minirt.h"
 
-void    init_scene(t_scn **scn, t_rt *rt)
+t_vctr	find_right_vctr(t_vctr frwrd)
 {
-    if (scn && *scn)
-    {
-        (*scn)->pst = rt->cam->crd;
-        (*scn)->aspct_rt = (double)HIGHT / (double)WIGHT;
-        (*scn)->v_agl = dgr_to_rd(rt->cam->fov);
-        (*scn)->hg = tan((*scn)->v_agl / 2);
-        (*scn)->wg = (*scn)->hg * (*scn)->aspct_rt;
-        (*scn)->frwrd = rt->cam->nrml_vctr;
-        (*scn)->up = unit_vctr(cros_prdct((t_vctr){1, 0, 0}, (*scn)->frwrd));
-        (*scn)->rght = unit_vctr(cros_prdct((*scn)->frwrd, (*scn)->up));
-    }
+	t_vctr	v;
+	t_vctr	r;
+
+	v = (t_vctr){0, 1, 0};
+	r = cros_prdct(frwrd, v);
+	if (!r.x && !r.y && !r.z)
+	{
+		v = (t_vctr){1, 0, 0};
+		r = cros_prdct(frwrd, v);
+	}
+	if (!r.x && !r.y && !r.z)
+	{
+		v = (t_vctr){0, 0, 1};
+		r = cros_prdct(frwrd, v);
+	}
+	return (r);
 }
 
-void    init_img(t_mlx_tools *mlx)
+void	init_scene(t_scn **scn, t_rt *rt)
 {
-    mlx->img = (t_img *)malloc(sizeof(t_img));
-    if (!mlx->img)
-    {
-        ft_printf("Error : Allocation failed\n", 2);
-        exit(EXIT_FAILURE);
-    }
-    mlx->img->mlx_img = mlx_new_image(mlx->mlx, HIGHT, WIGHT);
-    mlx->img->addr = mlx_get_data_addr(mlx->img->mlx_img, &mlx->img->bpp,
-            &mlx->img->line_len, &mlx->img->endian);
+	if (scn && *scn)
+	{
+		(*scn)->pst = rt->cam->crd;
+		(*scn)->aspct_rt = (double)HIGHT / (double)WIGHT;
+		(*scn)->v_agl = dgr_to_rd(rt->cam->fov);
+		(*scn)->wg = tan((*scn)->v_agl / 2);
+		(*scn)->hg = (*scn)->wg * (*scn)->aspct_rt;
+		(*scn)->frwrd = rt->cam->nrm;
+		(*scn)->rght = unit_vctr(find_right_vctr((*scn)->frwrd));
+		(*scn)->up = unit_vctr(cros_prdct((*scn)->rght, (*scn)->frwrd));
+	}
 }
 
-void    init_mlx(t_mlx_tools *mlx)
+void	init_img(t_mlx_tools *mlx)
 {
-    mlx->mlx = mlx_init();
-    mlx->win = mlx_new_window(mlx->mlx, HIGHT, WIGHT, "minirt");
-    init_img(mlx);
+	mlx->img = (t_img *)malloc(sizeof(t_img));
+	if (!mlx->img)
+	{
+		ft_printf("Error : Allocation failed\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	mlx->img->mlx_img = mlx_new_image(mlx->mlx, HIGHT, WIGHT);
+	mlx->img->addr = mlx_get_data_addr(mlx->img->mlx_img, &mlx->img->bpp,
+			&mlx->img->line_len, &mlx->img->endian);
 }
 
-void    render(t_rt *rt)
+void	init_mlx(t_mlx_tools *mlx)
 {
-    t_scn   *scn;
+	mlx->mlx = mlx_init();
+	mlx->win = mlx_new_window(mlx->mlx, HIGHT, WIGHT, "MINIRT");
+	init_img(mlx);
+}
 
-    scn = (t_scn *)malloc(sizeof(t_scn));
-    if (!scn)
-    {
-        ft_printf("Error : Allocation failed\n", 2);
-        exit(EXIT_FAILURE);
-    }
-    init_scene(&scn, rt);
-    rt->mlx = (t_mlx_tools *)malloc(sizeof(t_mlx_tools));
-    init_mlx(rt->mlx);
-    send_rays(rt, scn);
-    mlx_put_image_to_window(rt->mlx->mlx, rt->mlx->win, rt->mlx->img->mlx_img, 0, 0);
-    mlx_loop(rt->mlx->mlx);
+void	render(t_rt *rt)
+{
+	t_scn	*scn;
+
+	scn = (t_scn *)malloc(sizeof(t_scn));
+	if (!scn)
+	{
+		ft_printf("Error : Allocation failed\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	init_scene(&scn, rt);
+	rt->mlx = (t_mlx_tools *)malloc(sizeof(t_mlx_tools));
+	init_mlx(rt->mlx);
+	send_rays(rt, scn);
+	mlx_put_image_to_window(rt->mlx->mlx, rt->mlx->win, rt->mlx->img->mlx_img,
+		0, 0);
+	mlx_loop(rt->mlx->mlx);
 }

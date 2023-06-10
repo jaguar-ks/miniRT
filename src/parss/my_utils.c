@@ -6,40 +6,41 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:37:12 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/10 00:46:27 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:33:26 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-static bool is_delimiter(char c)
+static bool	is_delimiter(char c)
 {
-    return ft_isspace(c);
+	return (ft_isspace(c));
 }
 
-static int count_words(char *str)
+static int	count_words(char *str)
 {
-    int count = 0;
-    bool in_word = false;
+	int		count;
+	bool	in_word;
 
-    while (*str)
-    {
-        if (is_delimiter(*str))
-        {
-            in_word = false;
-        }
-        else if (!in_word)
-        {
-            in_word = true;
-            count++;
-        }
-        str++;
-    }
-
-    return count;
+	count = 0;
+	in_word = false;
+	while (*str)
+	{
+		if (is_delimiter(*str))
+		{
+			in_word = false;
+		}
+		else if (!in_word)
+		{
+			in_word = true;
+			count++;
+		}
+		str++;
+	}
+	return (count);
 }
 
-static char *extract_word(char *str)
+static char	*extract_word(char *str)
 {
     int     word_len;
     char    *word;
@@ -55,33 +56,34 @@ static char *extract_word(char *str)
     return (word);
 }
 
-char **ft_split2(char *str)
+char	**ft_split2(char *str)
 {
-    int num_words = count_words(str);
-    char **words = malloc((num_words + 1) * sizeof(char *));
+	int		num_words;
+	char	**words;
+	int		word_index;
+	bool	in_word;
 
-    if (!words)
-        return NULL;
-
-    int word_index = 0;
-    bool in_word = false;
-
-    while (*str)
-    {
-        if (is_delimiter(*str))
-        {
-            in_word = false;
-        }
-        else if (!in_word)
-        {
-            in_word = true;
-            words[word_index++] = extract_word(str);
-        }
-
-        str++;
-    }
-    words[word_index] = NULL;
-    return words;
+	num_words = count_words(str);
+	words = malloc((num_words + 1) * sizeof(char *));
+	if (!words)
+		return (NULL);
+	word_index = 0;
+	in_word = false;
+	while (*str)
+	{
+		if (is_delimiter(*str))
+		{
+			in_word = false;
+		}
+		else if (!in_word)
+		{
+			in_word = true;
+			words[word_index++] = extract_word(str);
+		}
+		str++;
+	}
+	words[word_index] = NULL;
+	return (words);
 }
 
 char* extract_elem(char** str, const char* elementPrefix, int h_m_elements) 
@@ -149,60 +151,60 @@ char* extract_elem(char** str, const char* elementPrefix, int h_m_elements)
     return (extract_str);
 }
 
-int ft_checkWords_4(char **array)
+int	ft_checkWords_4(char **array)
 {
-    int numWords;
-    char    **words;
-    int i;
-    int j;
+	int		numWords;
+	char	**words;
+	int		i;
+	int		j;
 
-    i = 0;
-    while(array[i] != NULL)
-    {
-        words = ft_split2(array[i]);
-        numWords = mtx_len(words);
-        if (numWords != 4)
-        {
-            j = -1;
-            while(words[j++])
-                free(words[j]);
-            free(words);
-            return(0);
-        }
-        j = -1;
-        while(words[j++])
-            free(words[j]);
-        free(words);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (array[i] != NULL)
+	{
+		words = ft_split2(array[i]);
+		numWords = mtx_len(words);
+		if (numWords != 4)
+		{
+			j = -1;
+			while (words[j++])
+				free(words[j]);
+			free(words);
+			return (0);
+		}
+		j = -1;
+		while (words[j++])
+			free(words[j]);
+		free(words);
+		i++;
+	}
+	return (1);
 }
 
-int ft_checkWords_6(char **array)
+int	ft_checkWords_6(char **array)
 {
-    int numWords;
-    char    **words;
-    int i;
-    int j;
+	int		numWords;
+	char	**words;
+	int		i;
+	int		j;
 
-    i = 0;
-    while(array[i] != NULL)
-    {
-        words = ft_split2(array[i]);
-        numWords = mtx_len(words);
-        if (numWords != 6)
-        {
-            j = -1;
-            while(words[j++])
-                free(words[j]);
-            free(words);
-            return(0);
-        }
-        j = -1;
-        while(words[j++])
-            free(words[j]);
-        free(words);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (array[i] != NULL)
+	{
+		words = ft_split2(array[i]);
+		numWords = mtx_len(words);
+		if (numWords != 6)
+		{
+			j = -1;
+			while (words[j++])
+				free(words[j]);
+			free(words);
+			return (0);
+		}
+		j = -1;
+		while (words[j++])
+			free(words[j]);
+		free(words);
+		i++;
+	}
+	return (1);
 }

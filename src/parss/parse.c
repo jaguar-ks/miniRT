@@ -6,7 +6,7 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/10 00:33:55 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:36:00 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,5 @@ void	init_rt(t_rt *rt)
 	check_alpha(rt->fl);
 	get_alpha(rt);
 	printf_tab(rt);
-	ft_leaks(*rt);
 	parse_obj(rt);
 }

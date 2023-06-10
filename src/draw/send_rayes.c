@@ -6,109 +6,93 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:43:00 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/04 21:06:16 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:19:14 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../inc/minirt.h"
+#include "../../inc/minirt.h"
 
-t_ray   make_ray(t_scn *scn, double x, double y)
+int	is_a_hit(void *obj, t_ObjectType type, t_ray *ray, double *t)
 {
-    t_ray   ray;
+	t_plane	*pl;
 
-    ray.org = scn->pst;
-    ray.drct = add_vctr(add_vctr(vctr_scl(scn->up, x), vctr_scl(scn->rght, -y)),
-        scn->frwrd);
-    ray.drct = unit_vctr(ray.drct);
-    return (ray);
+	if (type == PLANE)
+	{
+		pl = (t_plane *)obj;
+		pl->nrm = vctr_scl(pl->nrm, -1);
+		return (check_pln_intersection((t_plane *)obj, ray, t)
+			|| check_pln_intersection(pl, ray, t));
+		return (check_pln_intersection((t_plane *)obj, ray, t));
+	}
+	else if (type == SPHERE)
+		return (check_sph_intersection((t_sphere *)obj, ray, t));
+	else if (type == CYLENDER)
+		return (check_cyl_intersection((t_cylender *)obj, ray, t));
+	return (0);
 }
 
-int is_a_hit(void *obj, ObjectType type, t_ray *ray, double *t)
+int	pix_color(t_rt *rt, t_object *obj, t_ray *ray, double t)
 {
-    if (type == SPHERE)
-        return (check_sph_intersection((t_sphere *)obj, ray, t));
-    return (0);
+	t_hit_point	hp;
+
+	hp.r.org = add_vctr(ray->org, vctr_scl(ray->drct, t));
+	hp.nrm = get_nrm_att(obj, &hp.r, ray, t);
+	if (dot_prdct(hp.nrm, ray->drct) >= EPS)
+		hp.nrm = vctr_scl(hp.nrm, -1);
+	hp.r.drct = unit_vctr(sub_vctr(rt->lt->crd, hp.r.org));
+	if (blind(&hp.r, rt->object, rt->lt->crd))
+		hp.px_cl = add_clr(get_obj_clr(obj), rt->al->clr, rt->al->brightness);
+	else
+		hp.px_cl = visible(&hp.r, hp.nrm, get_obj_clr(obj), rt);
+	return (encode_rgb(&hp.px_cl));
 }
 
-int pix_color(void *hold, ObjectType type)
+int	find_pix_color(t_rt *rt, t_ray *ray)
 {
-    if (type == SPHERE) {
-        t_sphere    *sp = (t_sphere *)hold;
-        return (encode_rgb(&sp->clr));
-    }
-    return (0);
+	double		cls;
+	double		t;
+	t_object	*obj;
+	t_object	*hold;
+
+	hold = NULL;
+	obj = rt->object;
+	cls = DBL_MAX;
+	while (obj)
+	{
+		if (is_a_hit(obj->objct, obj->type, ray, &t) && t > EPS && cls
+			- t > EPS)
+		{
+			cls = t;
+			hold = obj;
+		}
+		obj = obj->next;
+	}
+	if (hold)
+		return (pix_color(rt, hold, ray, cls));
+	return (0);
 }
 
-int    find_pix_color(t_rt *rt, t_ray *ray)
+void	send_rays(t_rt *rt, t_scn *scn)
 {
-    double      cls;
-    double      t;
-    t_object    *obj;
-    t_object    *hold;
+	int		i;
+	int		j;
+	double	x;
+	double	y;
+	t_ray	ray;
 
-    hold = NULL;
-    obj = rt->object;
-    cls = DBL_MAX;
-    while (obj != NULL)
-    {
-        if (is_a_hit(obj->objct, obj->type, ray, &t) && !less_then(&cls, t))
-            hold = obj;
-        obj = obj->next;
-    }
-    if (hold)
-        return (pix_color(hold->objct, hold->type));
-    else
-    {
-        rt->al->clr.b *= rt->al->brightness * 10;
-        rt->al->clr.g *= rt->al->brightness * 10;
-        rt->al->clr.r *= rt->al->brightness * 10;
-        return (encode_rgb(&rt->al->clr));
-    }
-}
-
-void    print_cam_ray(t_scn *scn, t_ray *ray, int i , int j)
-{
-    printf("_________________________________________________\n");
-    printf("[%d][%d]\n", i ,j);
-    printf("cam position: %f, %f, %f\n", scn->pst.x, scn->pst.y, scn->pst.z);
-    printf("cam forwerd: %f, %f, %f\n", scn->frwrd.x, scn->frwrd.y, scn->frwrd.z);
-    printf("cam up: %f, %f, %f\n", scn->up.x, scn->up.y, scn->up.z);
-    printf("cam rght: %f, %f, %f\n", scn->rght.x, scn->rght.y, scn->rght.z);
-    printf("hight retion: %f\n", scn->hg);
-    printf("wight retion: %f\n", scn->wg);
-    printf("aspect retion: %f\n", scn->aspct_rt);
-    printf("FOV: %f\n", scn->v_agl);
-    printf("ray origine: %f, %f, %f\n", ray->org.x, ray->org.y, ray->org.z);
-    printf("ray diraction: %f, %f, %f\n", ray->drct.x, ray->drct.y, ray->drct.z);
-    printf("_________________________________________________\n");
-    
-}
-
-void    send_rays(t_rt *rt, t_scn *scn)
-{
-    int     i;
-    int     j;
-    double  x;
-    double  y;
-    t_ray   ray;
-
-    i  = HIGHT;
-    ray.org = scn->pst;
-    while (--i > 0)
-    {
-        j = WIGHT;
-        // printf("ROW[%d]_________________________________________\n", i);
-        while (--j > 0)
-        {
-            // printf("COL[%d]_________________________________________\n", j);
-            // sleep(1);
-            x = (double)i * 2 / HIGHT - 1;
-            y = (double)j * 2 / WIGHT - 1;
-            ray.drct = add_vctr(add_vctr(vctr_scl(scn->rght, y), vctr_scl(scn->up, x)),
-                    scn->frwrd);
-            ray.drct = unit_vctr(ray.drct);
-            // print_cam_ray(scn, &ray, i, j);
-            img_pix_put(rt->mlx->img, i , j, find_pix_color(rt, &ray));
-        }
-    }
+	i = HIGHT;
+	ray.org = scn->pst;
+	while (--i >= 0)
+	{
+		j = WIGHT;
+		while (--j >= 0)
+		{
+			x = (((double)i) * 2) / HIGHT - 1;
+			y = (((double)j) * 2) / WIGHT - 1;
+			ray.drct = add_vctr(scn->frwrd, add_vctr(vctr_scl(scn->up, y
+							* scn->wg), vctr_scl(scn->rght, -x * scn->hg)));
+			ray.drct = unit_vctr(ray.drct);
+			img_pix_put(rt->mlx->img, i, j, find_pix_color(rt, &ray));
+		}
+	}
 }

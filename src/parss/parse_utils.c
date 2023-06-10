@@ -6,7 +6,7 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:29:23 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/10 01:10:38 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:22:18 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,42 @@ char *SearchString(char **array, const char *needle)
     return(NULL);
 }
 
-int countWords(char* str) 
+int	countWords(char *str)
 {
-    int wordCount;
-    bool word;
+	int		wordCount;
+	bool	word;
 
-    wordCount = 0;
-    word = false;
-    while (*str != '\0') 
-    {
-        if (ft_isspace(*str)) 
-            word = false;
-        else if (!word)
-        {
-            word = true;
-            wordCount++;
-        }
-        str++;
-    }
-    return (wordCount);
+	wordCount = 0;
+	word = false;
+	while (*str != '\0')
+	{
+		if (ft_isspace(*str))
+			word = false;
+		else if (!word)
+		{
+			word = true;
+			wordCount++;
+		}
+		str++;
+	}
+	return (wordCount);
 }
 
 void	ft_valid(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
-    {
-        if ( ft_isdigit(str[i]) || ft_isspace(str[i]) || str[i] == '-')
-            i++;
-        else
-        {
-            ft_printf("Error: invalid input in ft_atoi from '%s'\n", 1, str);
-            exit(EXIT_FAILURE);
-        }
-    }
+	{
+		if (ft_isdigit(str[i]) || ft_isspace(str[i]) || str[i] == '-')
+			i++;
+		else
+		{
+			ft_printf("Error: invalid input in ft_atoi from '%s'\n", 1, str);
+			exit(EXIT_FAILURE);
+		}
+	}
 }
 
 int countDigits(int num) {
@@ -131,56 +131,54 @@ double ft_atof(const char* str)
     return result * sign;
 }
 
-void    ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(str[i])
-        write(1, &str[i++], 1);
+	i = 0;
+	while (str[i])
+		write(1, &str[i++], 1);
 }
 
-void printf_tab(t_rt *rt)
+void	printf_tab(t_rt *rt)
 {
-    printf("/*   ABIENT LIGHT   */\n");
-    printf("-brightness:\n");
-    printf("   -%f\n", rt->al->brightness);
-    printf("-RGB:\n");
-    printf("   -R: %d\n", rt->al->clr.r);
-    printf("   -G: %d\n", rt->al->clr.g);
-    printf("   -B: %d\n", rt->al->clr.b);
-    
-    printf("*   CAMERA   */\n");
-    printf("-fov:\n");
-    printf(  " -%d\n", rt->cam->fov);
-    printf("-cordination:\n");
-    printf("   -x: %0.f\n", rt->cam->crd.x);
-    printf("   -y: %0.f\n", rt->cam->crd.y);
-    printf("   -z: %0.f\n", rt->cam->crd.z);
-    printf("-vector:\n");
-    printf("   -x: %f\n", rt->cam->nrml_vctr.x);
-    printf("   -y: %f\n", rt->cam->nrml_vctr.y);
-    printf("   -z: %f\n", rt->cam->nrml_vctr.z);
-    
-    printf("/*     LIGHT   */\n");
-    printf("-RGB:\n");
-    printf("   -R: %d\n", rt->lt->clr.r);
-    printf("   -G: %d\n", rt->lt->clr.g);
-    printf("   -B: %d\n", rt->lt->clr.b);
-    printf("-cordination:\n");
-    printf("   -x: %0.f\n", rt->lt->crd.x);
-    printf("   -y: %0.f\n", rt->lt->crd.y);
-    printf("   -z: %0.f\n", rt->lt->crd.z);
-    printf("-Brightness: %f\n", rt->lt->bright);
+	printf("/*   ABIENT LIGHT   */\n");
+	printf("-brightness:\n");
+	printf("   -%f\n", rt->al->brightness);
+	printf("-RGB:\n");
+	printf("   -R: %d\n", rt->al->clr.r);
+	printf("   -G: %d\n", rt->al->clr.g);
+	printf("   -B: %d\n", rt->al->clr.b);
+	printf("*   CAMERA   */\n");
+	printf("-fov:\n");
+	printf(" -%d\n", rt->cam->fov);
+	printf("-cordination:\n");
+	printf("   -x: %0.f\n", rt->cam->crd.x);
+	printf("   -y: %0.f\n", rt->cam->crd.y);
+	printf("   -z: %0.f\n", rt->cam->crd.z);
+	printf("-vector:\n");
+	printf("   -x: %f\n", rt->cam->nrm.x);
+	printf("   -y: %f\n", rt->cam->nrm.y);
+	printf("   -z: %f\n", rt->cam->nrm.z);
+	printf("/*     LIGHT   */\n");
+	printf("-RGB:\n");
+	printf("   -R: %d\n", rt->lt->clr.r);
+	printf("   -G: %d\n", rt->lt->clr.g);
+	printf("   -B: %d\n", rt->lt->clr.b);
+	printf("-cordination:\n");
+	printf("   -x: %0.f\n", rt->lt->crd.x);
+	printf("   -y: %0.f\n", rt->lt->crd.y);
+	printf("   -z: %0.f\n", rt->lt->crd.z);
+	printf("-Brightness: %f\n", rt->lt->bright);
 }
 
-int count_negative(const char *str)
+int	count_negative(const char *str)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
-    i = 0;
-    count = 0;
+	i = 0;
+	count = 0;
 	while (str[i])
 	{
 		if (str[i] == '-')
@@ -189,33 +187,33 @@ int count_negative(const char *str)
 	}
 	return (count);
 }
-long M_ft_atoi(const char *str)
+long	M_ft_atoi(const char *str)
 {
-    int     i;
-    int     s;
-    long    r;
-    
-    i = 0;
-    s = 1;
-    r = 0;
-    ft_valid((char *)str);
-    while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
-           || str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-        i++;
-    if (count_negative(str) > 1)
-    {
-        ft_printf("Error: invalid input in ft_atoi from '%s'\n", 1, str);
-        exit(EXIT_FAILURE);
-    }
-    if (str[i] == '-')
-    {
-        s *= -1;
-        i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        r = (r * 10) + (str[i] - '0');
-        i++;
-    }
-    return (r * s);
+	int		i;
+	int		s;
+	long	r;
+
+	i = 0;
+	s = 1;
+	r = 0;
+	ft_valid((char *)str);
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (count_negative(str) > 1)
+	{
+		ft_printf("Error: invalid input in ft_atoi from '%s'\n", 1, str);
+		exit(EXIT_FAILURE);
+	}
+	if (str[i] == '-')
+	{
+		s *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		r = (r * 10) + (str[i] - '0');
+		i++;
+	}
+	return (r * s);
 }

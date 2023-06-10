@@ -6,11 +6,11 @@
 #    By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 15:07:02 by faksouss          #+#    #+#              #
-#    Updated: 2023/06/06 03:01:52 by nbouljih         ###   ########.fr        #
+#    Updated: 2023/06/10 01:39:59 by nbouljih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minirt
+NAME = miniRT
 
 CFLAGS = -Wall -Wextra -Werror -Ofast
 
@@ -21,8 +21,9 @@ RM = rm -rf
 SRC = src/main.c\
 		src/draw/img_utils.c\
 		src/draw/render.c\
+		src/draw/light.c\
 		src/draw/send_rayes.c\
-		src/math/sphere_intersection.c\
+		src/math/intersection.c\
 		src/math/vecrtors_operations.c\
 		src/math/vecrtors_operations_2.c\
 		src/parss/ft_Alight.c\
@@ -59,11 +60,14 @@ LIBTOOL = libtool/libft.a
 all : $(NAME)
 
 $(NAME): $(LIBTOOL) $(OBJ)
+	@printf "\r\033[0;33m⏳ MINIRT is compiling ...\033[0m"
 	cc $(CFLAGS) $(OBJ) $(LIBTOOL) $(MLX_FLAGS) -o $@
+	@printf "\r\033[0;33m⏳ MINIRT is ready ENJOY\033[0m"
 
 $(LIBTOOL) :
 	@printf "\r\033[0;33m⏳ libtool is compiling ...\033[0m"
 	@make -C libtool
+	@printf "\r\033[0;33m⏳ libtool is ready to use \033[0m"
 
 $(OBJDIR)/%.o : %.c $(HEADERS)
 	@mkdir -p $(dir $@)

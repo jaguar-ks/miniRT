@@ -6,13 +6,13 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:50:18 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/10 00:45:29 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:22:46 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-void    put_sp(t_sphere *sp, char **ptr)
+void	put_sp(t_sphere *sp, char **ptr)
 {
     ft_sp_cord(ptr[1], sp);
     if (ft_atof(ptr[2]) != 1337)
@@ -25,37 +25,36 @@ void    put_sp(t_sphere *sp, char **ptr)
     ft_sp_rgb(ptr[3], sp);
     deallocate(ptr);
 }
-void    get_sp(char **array, t_rt *rt)
+void	get_sp(char **array, t_rt *rt)
 {
-    t_sphere *sp;
-    char    **sp_val;
-    int     i;
+	t_sphere	*sp;
+	char		**sp_val;
+	int			i;
 
-    i = 0;
-    while (array[i])
-    {
-        sp_val = ft_split2(array[i]);
-        sp = malloc(sizeof(t_sphere));
-        if (!sp)
-        {
-            ft_printf("Error: Failed to allocate memory for sphere\n", 1);
-            exit(EXIT_FAILURE);
-        }
-        if (sp_val != NULL && mtx_len(sp_val) == 4)
-        { 
-            put_sp(sp, sp_val);
-            add_Obj(&rt->object, (void *)sp, SPHERE);    
-        }
-        else
-        {
-            ft_printf("Error: Invalid SP values\n", 2);
-            exit(EXIT_FAILURE);
-        }
-        i++;
-    }
-    
+	i = 0;
+	while (array[i])
+	{
+		sp_val = ft_split2(array[i]);
+		sp = malloc(sizeof(t_sphere));
+		if (!sp)
+		{
+			ft_printf("Error: Failed to allocate memory for sphere\n", 1);
+			exit(EXIT_FAILURE);
+		}
+		if (sp_val != NULL && mtx_len(sp_val) == 4)
+		{
+			put_sp(sp, sp_val);
+			add_Obj(&rt->object, (void *)sp, SPHERE);
+		}
+		else
+		{
+			ft_printf("Error: Invalid SP values\n", 2);
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
 }
-void    ft_sp(t_rt *rt, int count)
+void	ft_sp(t_rt *rt, int count)
 {
     char    *sp_elm;
     char    **array;    
