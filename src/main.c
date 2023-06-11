@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 03:21:44 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/11 03:35:43 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ char	**read_file(char *fl)
 	int		fd;
 
 	r = NULL;
-    fd = read_fl(fl);
-    if (fd < 0)
-    {
-        ft_printf("Error : openning the file\n", 2);
-        exit(EXIT_FAILURE);
-    }
+	fd = read_fl(fl);
+	if (fd < 0)
+	{
+		ft_printf("Error : openning the file\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	r = gnl(fd);
-    if (!r)
+	if (!r)
 	{
 		ft_printf("Error : empty file\n", 2);
 		exit(1);
@@ -59,14 +59,8 @@ void	minirt(char *fl)
 	render(&rt);
 }
 
-void	hh(void)
-{
-	system("leaks miniRT");
-}
-
 int	main(int ac, char **av)
 {
-	atexit(hh);
 	if (ac == 2)
 		minirt(av[1]);
 	else
