@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 01:45:31 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 03:21:44 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int read_fl(char *fl)
+int	read_fl(char *fl)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ char	**read_file(char *fl)
 {
 	char	*r;
 	char	**sp;
-	int     fd;
+	int		fd;
 
 	r = NULL;
     fd = read_fl(fl);
@@ -49,16 +49,6 @@ char	**read_file(char *fl)
 	return (sp);
 }
 
-int	mtx_len(char **mx)
-{
-	int	i;
-
-	i = 0;
-	while (mx[i])
-		i++;
-	return (i);
-}
-
 void	minirt(char *fl)
 {
 	t_rt	rt;
@@ -69,13 +59,14 @@ void	minirt(char *fl)
 	render(&rt);
 }
 
-void hh(){
-    system("leaks miniRT");
+void	hh(void)
+{
+	system("leaks miniRT");
 }
 
 int	main(int ac, char **av)
 {
-    atexit(hh);
+	atexit(hh);
 	if (ac == 2)
 		minirt(av[1]);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 01:11:55 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 03:28:15 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,18 @@ void	get_alpha(t_rt *rt)
 	t_lines	lines[3];
 
 	lines[0] = init_lines("A ", ft_alight, 3);
-	lines[1] = init_lines("C ", ft_Cam, 4);
+	lines[1] = init_lines("C ", ft_cam, 4);
 	lines[2] = init_lines("L ", ft_light, 4);
 	i = 0;
 	while (i < sizeof(lines) / sizeof(lines[0]))
 	{
-		tmp = SearchString(rt->fl, lines[i].prefix);
+		tmp = search_string(rt->fl, lines[i].prefix);
 		if (tmp == NULL)
 		{
 			printf("Error: Unable to find '%s' line\n", lines[i].prefix);
 			exit(1);
 		}
-		if (!(lines[i].count ^ countWords(tmp)))
+		if (!(lines[i].count ^ count_words(tmp)))
 			lines[i].function(tmp, rt);
 		else
 		{
@@ -77,37 +77,6 @@ void	get_alpha(t_rt *rt)
 		}
 		i++;
 	}
-}
-
-int	space(const char *string)
-{
-	int	i;
-
-	i = 0;
-	while (string[i] && ft_isspace(string[i]))
-		i++;
-	return (i);
-}
-
-char	*trim(char *str)
-{
-	char	*ptr;
-	int		i;
-	int		t;
-	int		j;
-
-	t = strlen(str);
-	i = space(str);
-	ptr = (char *)malloc(sizeof(char) * (t - i + 1));
-	j = 0;
-	while (str[i])
-	{
-		ptr[j] = str[i];
-		i++;
-		j++;
-	}
-	ptr[j] = '\0';
-	return (ptr);
 }
 
 void	len_elem(char **string, int *pl, int *sp, int *cy)
@@ -125,11 +94,6 @@ void	len_elem(char **string, int *pl, int *sp, int *cy)
 			(*sp)++;
 		else if (!ft_strncmp(ptr, "cy ", strlen("cy ")))
 			(*cy)++;
-		// else if (ptr[0] != 'A' && ptr[0] != 'C' && ptr[0] != 'L')
-		// {
-		// 	printf("Error: Unknown object type\n");
-		// 	exit(EXIT_FAILURE);
-		// }
 		i++;
 		free(ptr);
 	}
@@ -139,6 +103,5 @@ void	init_rt(t_rt *rt)
 {
 	check_alpha(rt->fl);
 	get_alpha(rt);
-	// printf_tab(rt);
 	parse_obj(rt);
 }

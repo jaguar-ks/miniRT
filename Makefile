@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+         #
+#    By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 15:07:02 by faksouss          #+#    #+#              #
-#    Updated: 2023/06/11 01:49:19 by faksouss         ###   ########.fr        #
+#    Updated: 2023/06/11 03:27:40 by nbouljih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,22 +20,29 @@ RM = rm -rf
 
 SRC = src/main.c\
 		src/draw/img_utils.c\
-		src/draw/render.c\
 		src/draw/light.c\
+		src/draw/render.c\
 		src/draw/send_rayes.c\
 		src/math/intersection.c\
 		src/math/vecrtors_operations.c\
 		src/math/vecrtors_operations_2.c\
+		src/parss/ft_al_ut.c\
 		src/parss/ft_Alight.c\
+		src/parss/ft_atof.c\
+		src/parss/ft_atois.c\
 		src/parss/ft_Cam.c\
 		src/parss/ft_cy.c\
 		src/parss/ft_cy_ut.c\
+		src/parss/ft_cy_ut2.c\
 		src/parss/ft_Light.c\
+		src/parss/ft_light_ut.c\
 		src/parss/ft_pl.c\
 		src/parss/ft_sp.c\
 		src/parss/ft_sp_ut.c\
 		src/parss/list_utils.c\
+		src/parss/my_ut3.c\
 		src/parss/my_utils.c\
+		src/parss/my_utils2.c\
 		src/parss/parse.c\
 		src/parss/parse2.c\
 		src/parss/parse_utils.c\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 01:49:34 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 03:30:32 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,33 +177,42 @@ typedef struct s_read
 	char			*temp;
 }					t_read;
 
-char				*SearchString(char **array, const char *needle);
+bool				is_delimiter(char c);
+char				*ft_strncpy(char *dest, const char *src, size_t n);
+void				ft_rgb_al(char *string, t_rt *rt);
+char				*ft_strcat(char *dest, const char *src);
+void				ft_exit(char *str, int i);
+void				ft_light_coordination(char *string, t_rt *rt);
+void				ft_light_cordcheck(char **ptr, t_rt *rt);
+int					space(const char *string);
+char				*search_string(char **array, const char *needle);
 int					ft_Double_strlen(char **array);
-int					countWords(char *str);
+int					count_words(char *str);
 void				init_rt(t_rt *rt);
 void				ft_Alight(char *line, t_rt *rt);
 double				ft_atof(const char *str);
 void				ft_putstr(char *str);
-void				ft_Cam(char *string, t_rt *rt);
+void				ft_cam(char *string, t_rt *rt);
 int					mtx_len(char **mx);
 void				ft_light(char *tmp, t_rt *rt);
 void				printf_tab(t_rt *rt);
-long				M_ft_atoi(const char *str);
+long				m_ft_atoi(const char *str);
 int					count_negative(const char *str);
 char				**ft_split2(char *str);
 void				*ft_realloc(void *ptr, size_t new_size);
 void				ft_pl(t_rt *rt, int count);
-void				add_Obj(t_object **lst, void *object, int type);
+void				add_obj(t_object **lst, void *object, int type);
 char				*extract_elem(char **str, const char *elementPrefix,
 						int h_m_elements);
-int					ft_checkWords_4(char **array);
-void				ft_pl_Cordination(char *string, t_plane *rt);
+int					ft_ch_words_for(char **array);
+void				ft_pl_cordination(char *string, t_plane *rt);
 void				parse_obj(t_rt *rt);
+double				ft_atof(const char *str);
 void				len_elem(char **string, int *pl, int *sp, int *cy);
 void				print_objects(t_rt *rt);
 void				ft_pl_vec(char *string, t_plane *rt);
 void				ft_sp_cord(char *string, t_sphere *rt);
-int					ft_checkWords_6(char **array);
+int					ft_ch_words_six(char **array);
 void				ft_sp_rgb(char *rgb_string, t_sphere *sp);
 void				ft_sp(t_rt *rt, int count);
 void				ft_cy(t_rt *rt, int count);
@@ -212,6 +221,7 @@ void				ft_cy_vec(char *string, t_cylender *rt);
 void				ft_cy_cord(char *string, t_cylender *rt);
 char				*trim(char *str);
 void				ft_alight(char *line, t_rt *rt);
+void				ft_light_coordination(char *string, t_rt *rt);
 /*******************|MATH|********************/
 t_vctr				add_vctr(t_vctr v1, t_vctr v2);
 t_vctr				sub_vctr(t_vctr v1, t_vctr v2);
