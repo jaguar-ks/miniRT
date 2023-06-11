@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:08:53 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 01:42:26 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 01:45:31 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ char	**read_file(char *fl)
         exit(EXIT_FAILURE);
     }
 	r = gnl(fd);
+    if (!r)
+	{
+		ft_printf("Error : empty file\n", 2);
+		exit(1);
+	}
 	sp = ft_split(r, '\n');
 	free(r);
 	return (sp);
@@ -59,11 +64,6 @@ void	minirt(char *fl)
 	t_rt	rt;
 
 	rt.fl = read_file(fl);
-	if (!rt.fl || !rt.fl[0])
-	{
-		ft_printf("Error : empty file\n", 2);
-		exit(1);
-	}
 	init_rt(&rt);
 	deallocate(rt.fl);
 	render(&rt);

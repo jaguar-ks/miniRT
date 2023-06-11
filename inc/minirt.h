@@ -6,14 +6,13 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 01:28:56 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 01:49:34 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include "../get_next_line/get_next_line.h"
 # include "../libtool/inc/libft.h"
 # include <float.h>
 # include <mlx.h>

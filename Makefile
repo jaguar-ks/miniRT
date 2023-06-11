@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+         #
+#    By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 15:07:02 by faksouss          #+#    #+#              #
-#    Updated: 2023/06/10 01:39:59 by nbouljih         ###   ########.fr        #
+#    Updated: 2023/06/11 01:49:19 by faksouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,9 @@ SRC = src/main.c\
 		src/parss/list_utils.c\
 		src/parss/my_utils.c\
 		src/parss/parse.c\
-		src/parss/read.c\
 		src/parss/parse2.c\
 		src/parss/parse_utils.c\
 		src/parss/pl_ut.c\
-		get_next_line/get_next_line.c\
-		get_next_line/get_next_line_utils.c
 
 OBJDIR = obj
 
@@ -52,7 +49,6 @@ HEADERS = libtool/inc/libft.h\
 		inc/minirt.h
 
 INC_HEADERS = -I libtool/inc\
-			-I get_next_line/\
 			-I inc/
 
 LIBTOOL = libtool/libft.a
