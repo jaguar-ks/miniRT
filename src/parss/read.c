@@ -6,7 +6,7 @@
 /*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 21:09:16 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/04 21:16:21 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/10 05:33:01 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	r_2(t_read *r_data)
 	r_data->all_ln = r_data->temp;
 	r_data->total_si += r_data->line_s;
 	free(r_data->line);
+	r_data->line = get_next_line(r_data->fd);
 }
 
 char	*read_all_lines(const char *filename)
@@ -55,7 +56,8 @@ char	*read_all_lines(const char *filename)
 		perror("Error: Opening the file");
 		exit(EXIT_FAILURE);
 	}
-	while ((r_data.line = get_next_line(r_data.fd)) != NULL)
+	r_data.line = get_next_line(r_data.fd);
+	while (r_data.line != NULL)
 	{
 		r_data.line_s = ft_strlen(r_data.line);
 		r_data.temp = malloc(r_data.total_si + r_data.line_s + 1);
@@ -68,6 +70,5 @@ char	*read_all_lines(const char *filename)
 		}
 		r_2(&r_data);
 	}
-	close(r_data.fd);
-	return (r_data.all_ln);
+	return (close(r_data.fd), r_data.all_ln);
 }

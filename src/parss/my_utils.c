@@ -3,57 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   my_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:37:12 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/10 02:39:24 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 03:13:38 by nbouljih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-static bool	is_delimiter(char c)
-{
-	return (ft_isspace(c));
-}
-
-static int	count_words(char *str)
-{
-	int		count;
-	bool	in_word;
-
-	count = 0;
-	in_word = false;
-	while (*str)
-	{
-		if (is_delimiter(*str))
-		{
-			in_word = false;
-		}
-		else if (!in_word)
-		{
-			in_word = true;
-			count++;
-		}
-		str++;
-	}
-	return (count);
-}
-
 static char	*extract_word(char *str)
 {
-    int     word_len;
-    char    *word;
-    word_len = 0;
-    while (*str && !is_delimiter(*str))
-    {
-        word_len++;
-        str++;
-    }
-    word = malloc((word_len + 1) * sizeof(char));
-    strncpy(word, str - word_len, word_len);//implement
-    word[word_len] = '\0';
-    return (word);
+	int		word_len;
+	char	*word;
+
+	word_len = 0;
+	while (*str && !is_delimiter(*str))
+	{
+		word_len++;
+		str++;
+	}
+	word = malloc((word_len + 1) * sizeof(char));
+	ft_strncpy(word, str - word_len, word_len);
+	word[word_len] = '\0';
+	return (word);
 }
 
 char	**ft_split2(char *str)
@@ -84,60 +57,28 @@ char	**ft_split2(char *str)
 	return (words);
 }
 
-char* extract_elem(char** str, const char* elementPrefix, int h_m_elements) 
+char	*ft_strcat(char *dest, const char *src)
 {
-    int     count;
-    char    **extract_el; 
-    char    *ptr;
-    size_t  extract_sz;
-    char    *extract_str;
-    int     i;
-    
-    extract_el = malloc((h_m_elements + 1) * sizeof(char*));
-    if (extract_el == NULL) 
-    {
-        ft_printf("Error: Allocation problem from extract_elem\n", 2);
-        return NULL;
-    }
-    count = 0;
-    i = 0;
-    while(str[i])
-    {
-        ptr = trim(str[i]);
-        // while (*ptr && ft_isspace(*ptr)) 
-        //     ptr++;
-        if (!ft_strncmp(ptr, elementPrefix, ft_strlen(elementPrefix))) 
-        {
-            extract_el[count] = ft_strdup(str[i]);
-            count++;
-        }
-        free(ptr);
-        i++;
-    }
-    extract_el[count] = NULL; 
-    extract_sz = 0;
-    for (int i = 0; i < count; i++) {
-        extract_sz += ft_strlen(extract_el[i]) + 1;  
-    } 
-    extract_str = malloc(extract_sz);
-    if (extract_str == NULL) 
-    {
-        free(extract_el);
-        return NULL;
-    }
-    extract_str[0] = '\0';  
-    for (int i = 0; i < count; i++) 
-    {
-        strcat(extract_str, extract_el[i]); //strcat
-        strcat(extract_str, "\n");
-    }
-    deallocate(extract_el);
-    return (extract_str);
+	char	*dest_ptr;
+
+	dest_ptr = dest;
+	while (*dest_ptr != '\0')
+	{
+		dest_ptr++;
+	}
+	while (*src != '\0')
+	{
+		*dest_ptr = *src;
+		dest_ptr++;
+		src++;
+	}
+	*dest_ptr = '\0';
+	return (dest);
 }
 
-int	ft_checkWords_4(char **array)
+int	ft_ch_words_for(char **array)
 {
-	int		numWords;
+	int		n_words;
 	char	**words;
 	int		i;
 
@@ -145,10 +86,10 @@ int	ft_checkWords_4(char **array)
 	while (array[i] != NULL)
 	{
 		words = ft_split2(array[i]);
-		numWords = mtx_len(words);
-		if (numWords != 4)
+		n_words = mtx_len(words);
+		if (n_words != 4)
 		{
-    		deallocate(words);
+			deallocate(words);
 			return (0);
 		}
 		deallocate(words);
@@ -157,9 +98,9 @@ int	ft_checkWords_4(char **array)
 	return (1);
 }
 
-int	ft_checkWords_6(char **array)
+int	ft_ch_words_six(char **array)
 {
-	int		numWords;
+	int		n_words;
 	char	**words;
 	int		i;
 
@@ -167,8 +108,8 @@ int	ft_checkWords_6(char **array)
 	while (array[i] != NULL)
 	{
 		words = ft_split2(array[i]);
-		numWords = mtx_len(words);
-		if (numWords != 6)
+		n_words = mtx_len(words);
+		if (n_words != 6)
 		{
 			deallocate(words);
 			return (0);

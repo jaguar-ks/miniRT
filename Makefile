@@ -6,7 +6,7 @@
 #    By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 15:07:02 by faksouss          #+#    #+#              #
-#    Updated: 2023/06/10 01:39:59 by nbouljih         ###   ########.fr        #
+#    Updated: 2023/06/11 03:15:35 by nbouljih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = src/main.c\
 		src/parss/ft_Alight.c\
 		src/parss/ft_Cam.c\
 		src/parss/ft_cy.c\
+		src/parss/ft_al_ut.c\
 		src/parss/ft_cy_ut.c\
 		src/parss/ft_Light.c\
 		src/parss/ft_pl.c\
@@ -36,11 +37,17 @@ SRC = src/main.c\
 		src/parss/ft_sp_ut.c\
 		src/parss/list_utils.c\
 		src/parss/my_utils.c\
+		src/parss/my_utils2.c\
+		src/parss/my_ut3.c\
 		src/parss/parse.c\
 		src/parss/read.c\
 		src/parss/parse2.c\
+		src/parss/ft_cy_ut2.c\
 		src/parss/parse_utils.c\
+		src/parss/ft_atof.c\
 		src/parss/pl_ut.c\
+		src/parss/ft_atois.c\
+		src/parss/ft_light_ut.c\
 		get_next_line/get_next_line.c\
 		get_next_line/get_next_line_utils.c
 
