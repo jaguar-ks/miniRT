@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:45:38 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/10 02:25:27 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 01:21:43 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,57 +65,6 @@ void	init_mlx(t_mlx_tools *mlx)
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, HIGHT, WIGHT, "MINIRT");
 	init_img(mlx);
-}
-
-int	out(t_rt *rt)
-{
-	t_object	*tmp;
-
-	mlx_destroy_image(rt->mlx->mlx, rt->mlx->img->mlx_img);
-	mlx_clear_window(rt->mlx->mlx, rt->mlx->win);
-	mlx_destroy_window(rt->mlx->mlx, rt->mlx->win);
-	free(rt->al);
-	free(rt->cam);
-	free(rt->lt);
-	free(rt->mlx->img);
-	free(rt->mlx);
-	tmp = rt->object;
-	while (rt->object)
-	{
-		rt->object = rt->object->next;
-		free(tmp->objct);
-		free(tmp);
-		tmp = rt->object;
-	}
-	exit(0);
-	return (0);
-}
-
-int	out_k(int k, t_rt *rt)
-{
-	t_object	*tmp;
-
-	if (k == 53)
-	{
-		mlx_destroy_image(rt->mlx->mlx, rt->mlx->img->mlx_img);
-		mlx_clear_window(rt->mlx->mlx, rt->mlx->win);
-		mlx_destroy_window(rt->mlx->mlx, rt->mlx->win);
-		free(rt->al);
-		free(rt->cam);
-		free(rt->lt);
-		free(rt->mlx->img);
-		free(rt->mlx);
-		tmp = rt->object;
-		while (rt->object)
-		{
-			rt->object = rt->object->next;
-			free(tmp->objct);
-			free(tmp);
-			tmp = rt->object;
-		}
-		exit(0);
-	}
-	return (0);
 }
 
 void	render(t_rt *rt)

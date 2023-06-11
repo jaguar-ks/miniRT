@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/10 04:00:03 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 01:11:55 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,11 @@ void	len_elem(char **string, int *pl, int *sp, int *cy)
 			(*sp)++;
 		else if (!ft_strncmp(ptr, "cy ", strlen("cy ")))
 			(*cy)++;
-		else if (ptr[0] != 'A' && ptr[0] != 'C' && ptr[0] != 'L')
-		{
-			printf("Error: Unknown object type\n");
-			exit(EXIT_FAILURE);
-		}
+		// else if (ptr[0] != 'A' && ptr[0] != 'C' && ptr[0] != 'L')
+		// {
+		// 	printf("Error: Unknown object type\n");
+		// 	exit(EXIT_FAILURE);
+		// }
 		i++;
 		free(ptr);
 	}

@@ -6,12 +6,12 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/10 01:52:12 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 01:20:23 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef minirt_H
-# define minirt_H
+#ifndef MINIRT_H
+# define MINIRT_H
 
 # include "../get_next_line/get_next_line.h"
 # include "../libtool/inc/libft.h"
@@ -170,13 +170,13 @@ typedef struct s_count
 
 typedef struct s_read
 {
-    char	*line;
-	char	*all_ln;
-	size_t	total_si;
-	int		fd;
-	size_t	line_s;
-	char	*temp;
-}t_read;
+	char			*line;
+	char			*all_ln;
+	size_t			total_si;
+	int				fd;
+	size_t			line_s;
+	char			*temp;
+}					t_read;
 
 char				*SearchString(char **array, const char *needle);
 int					ft_Double_strlen(char **array);
@@ -195,7 +195,8 @@ char				**ft_split2(char *str);
 void				*ft_realloc(void *ptr, size_t new_size);
 void				ft_pl(t_rt *rt, int count);
 void				add_Obj(t_object **lst, void *object, int type);
-char				*extract_elem(char **str, const char *elementPrefix, int h_m_elements);
+char				*extract_elem(char **str, const char *elementPrefix,
+						int h_m_elements);
 int					ft_checkWords_4(char **array);
 void				ft_pl_Cordination(char *string, t_plane *rt);
 void				parse_obj(t_rt *rt);

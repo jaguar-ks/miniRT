@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:28:34 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/09 21:01:18 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 01:13:31 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	blind(t_ray *r, t_object *obj, t_crd l)
 		}
 		tmp = tmp->next;
 	}
-	if (hld && dot_prdct(tp.drct, r->drct) <= EPS)
+	if (hld)
 		if (vctr_len(sub_vctr(tp.org, r->org)) < vctr_len(sub_vctr(l, r->org)))
 			return (1);
 	return (0);
