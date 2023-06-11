@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pl.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbouljih <nbouljih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:15:39 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 03:10:02 by nbouljih         ###   ########.fr       */
+/*   Updated: 2023/06/11 05:04:30 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	get_pl(char **array, t_rt *rt)
 		pl_valu = ft_split2(array[i]);
 		plane = malloc(sizeof(t_plane));
 		if (!plane)
-			ft_exit("Error: Failed to allocate memory for plane\n", 1);
+			ft_exit("Error: Failed to allocate memory for plane\n", 2);
 		if (pl_valu != NULL && mtx_len(pl_valu) == 4)
 		{
 			ft_pl_cordination(pl_valu[1], plane);
