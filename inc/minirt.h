@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:02:38 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 01:20:23 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 01:24:59 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,6 +250,8 @@ t_rgb				add_clr(t_rgb cl1, t_rgb cl2, double r);
 t_rgb				visible(t_ray *r, t_vctr nrm, t_rgb obj, t_rt *rt);
 int					blind(t_ray *r, t_object *obj, t_crd l);
 t_rgb				get_obj_clr(t_object *obj);
+int					out_k(int k, t_rt *rt);
+int					out_k(int k, t_rt *rt);
 /************************************************/
 
 #endif
