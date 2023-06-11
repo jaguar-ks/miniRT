@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:10:03 by faksouss          #+#    #+#             */
-/*   Updated: 2023/06/10 01:09:22 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/11 01:30:02 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	*gnl(int fd)
 	int			i;
 	static char	*r;
 	char		*bf;
-	// char		*ln;
 
 	i = 1;
 	while (i)
