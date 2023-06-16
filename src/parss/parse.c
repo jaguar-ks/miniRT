@@ -6,7 +6,7 @@
 /*   By: faksouss <faksouss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:59:48 by nbouljih          #+#    #+#             */
-/*   Updated: 2023/06/11 05:09:11 by faksouss         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:37:29 by faksouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void	len_elem(char **string, int *pl, int *sp, int *cy)
 			(*sp)++;
 		else if (!ft_strncmp(ptr, "cy ", strlen("cy ")))
 			(*cy)++;
-        else if (ft_strncmp(string[i], "A ", 2) && ft_strncmp(string[i], "C ", 2)
-            && ft_strncmp(string[i], "L ", 2))
+        else if ((ft_strncmp(string[i], "A ", 2) && ft_strncmp(string[i], "C ", 2)
+            && ft_strncmp(string[i], "L ", 2)) && (space(string[i]) != (int)ft_strlen(string[i])))
             ft_exit("Error : Unknowen Object\n", 2);
 		i++;
 		free(ptr);
