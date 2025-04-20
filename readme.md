@@ -1,49 +1,129 @@
-# *minirt* 
-Read the File:
 
-~>Create a function to read the scene description file. This function should take the file path as input and return the contents of the file as a string or a list of lines.
-Open the file using the open system call and check for any errors using perror and exit if necessary.
-Read the file contents using the read system call or similar file reading functions.
-Close the file using the close system call.
-Split Elements:
+---
 
-~>Create a function to split the contents of the file into separate elements. Each element represents a different object or setting in the scene.
-Split the file contents by line breaks (n) to separate each element.
-You can store the split elements in a list or any other suitable data structure for further processing.
-Process Elements:
+# 🌀 miniRT
 
-~>Iterate through each element and process them accordingly based on their type.
-Implement separate functions for each type of element (ambient lighting, camera, light, sphere, plane, cylinder) to handle their specific parsing and processing logic.
-Process Ambient Lighting:
+A simple **ray tracing** engine built in **C**, capable of rendering 3D scenes based on a plain-text scene description file. This project reads a `.rt` file, parses various 3D objects, and renders them using the MiniLibX graphical library.
 
-~>Create a function to parse and process the ambient lighting element.
-Extract the ambient lighting ratio and RGB color values from the element.
-Convert and store the values in suitable data structures or variables for later use.
-Process Camera:
+---
 
-~>Create a function to parse and process the camera element.
-Extract the view point coordinates, normalized orientation vector, and field of view (FOV) from the element.
-Convert and store the values in suitable data structures or variables for later use.
-Process Light:
+## 📜 Overview
 
-~>Create a function to parse and process the light element.
-Extract the light point coordinates, brightness ratio, and RGB color values from the element.
-Convert and store the values in suitable data structures or variables for later use.
-Process Sphere:
+**miniRT** parses and processes a custom scene file containing:
 
-~>Create a function to parse and process the sphere element.
-Extract the sphere center coordinates, diameter, and RGB color values from the element.
-Convert and store the values in suitable data structures or variables for later use.
-Process Plane:
+- Ambient lighting
+- Camera configuration
+- Light sources
+- Geometric shapes: Sphere, Plane, Cylinder
 
-Create a function to parse and process the plane element.
-Extract the plane point coordinates, normalized normal vector, and RGB color values from the element.
-Convert and store the values in suitable data structures or variables for later use.
-Process Cylinder:
+These components are interpreted, and the scene is rendered with ray tracing techniques—calculating pixel color by simulating light rays.
 
-Create a function to parse and process the cylinder element.
-Extract the cylinder center coordinates, normalized axis vector, diameter, height, and RGB color values from the element.
-Convert and store the values in suitable data structures or variables for later use.
-These functions will help you parse and process the different elements in the scene description file. You can further enhance these functions based on your specific implementation requirements and error handling needs. Remember to handle any potential errors that may occur during parsing, such as invalid input formats or missing information.
+---
 
-By implementing these functions, you will be able to extract and store the necessary information from the scene description file to create your raytracer program.
+## 🔧 How It Works
+
+### ✅ Scene File Parsing
+1. **Read the file:**  
+   Opens and reads the `.rt` scene file using system calls (`open`, `read`, `close`).
+
+2. **Split into elements:**  
+   Lines are split and classified (e.g., Ambient, Camera, Sphere...).
+
+3. **Element-specific processing:**  
+   - `A` – Ambient light (ratio & RGB)
+   - `C` – Camera (position, orientation, FOV)
+   - `L` – Light (position, brightness, color)
+   - `sp` – Sphere (center, diameter, color)
+   - `pl` – Plane (point, normal, color)
+   - `cy` – Cylinder (position, axis, diameter, height, color)
+
+Each type has its own dedicated parser to validate and convert inputs to data structures.
+
+---
+
+### 🖼️ Rendering
+Rays are generated from the camera and tested against scene objects:
+- **Intersections** are calculated for each ray.
+- **Lighting** and **shadows** are computed using the Phong reflection model.
+- Results are drawn onto the window via **MiniLibX**.
+
+---
+
+## 📁 Project Structure
+
+```bash
+miniRT/
+│
+├── inc/               # Header files
+│
+├── libtool/           # Libft library
+│
+├── obj/               # Object files (generated)
+│
+├── src/
+│   ├── draw/          # Rendering logic
+│   ├── math/          # Vector math and intersection algorithms
+│   └── parss/         # Scene parsing functions
+│
+├── Makefile
+└── README.md
+```
+
+---
+
+## 🛠️ Build Instructions
+
+> Requirements: macOS with MiniLibX, a working `make`, and C compiler.
+
+### 🔃 To build the project:
+```bash
+make
+```
+
+### 🧼 To clean object files:
+```bash
+make clean
+```
+
+### 🧨 To remove the binary:
+```bash
+make fclean
+```
+
+### 🔄 To rebuild from scratch:
+```bash
+make re
+```
+
+---
+
+## 📌 Controls
+
+Once running, the window will display the rendered scene. Basic keyboard/mouse interaction can be added for enhancements like:
+- Moving the camera
+- Rotating objects
+- Reloading scenes
+
+> *(Interaction behavior depends on your implementation)*
+
+---
+
+## 🧪 Example Scene File
+
+```txt
+A 0.3 255,255,255
+C 0,0,15 0,0,1 100      
+L -7,8,30 0.6 255,255,255
+sp 0,2,30 3 255,0,0
+pl 0,-3,0 0,1,0 0,255,255
+pl 0,0,90 0,0,1 127,131,188
+```
+
+---
+
+## ✍️ Authors
+
+- `nbouljih`
+- `faksouss`
+
+---
