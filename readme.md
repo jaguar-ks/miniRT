@@ -1,14 +1,11 @@
 
 ---
-
-# 🌀 miniRT
-
-A simple **ray tracing** engine built in **C**, capable of rendering 3D scenes based on a plain-text scene description file. This project reads a `.rt` file, parses various 3D objects, and renders them using the MiniLibX graphical library.
-
+## 🌀 miniRT
 ---
 
-## 📜 Overview
+##  Overview
 
+A simple **ray tracing** engine built in **C**, capable of rendering 3D scenes based on a plain-text scene description file. This project reads a `.rt` file, parses various 3D objects, and renders them using the MiniLibX graphical library.
 **miniRT** parses and processes a custom scene file containing:
 
 - Ambient lighting
